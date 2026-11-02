@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
 
   /* 公開後のサイトのURL（例: "https://rs-story.netlify.app"）
      SNSでシェアしたときの画像表示などに使います。わからなければ空欄でOK。 */
-  siteUrl: "",
+  siteUrl: "https://r-studio7.github.io/r-story/",
 
   /* 外部サービスのURL */
   links: {
@@ -33,5 +33,5 @@ window.SITE_CONFIG = {
   /* 制作中のヒント表示
      true  … 未設定の場所に「設定が必要」という点線のメモを表示します（作業中に便利）。
      false … メモを隠します。★ サイトを公開する前に false にしてください。 */
-  showSetupHints: true
+  showSetupHints: false
 };
