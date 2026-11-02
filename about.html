@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About &amp; Follow — R’s Story</title>
+  <meta name="description" content="About R’s Story — an online magazine about travel, design and little joys. Follow on YouTube, Instagram, Pinterest and Substack.">
+  <meta name="theme-color" content="#F8F5F0">
+  <meta property="og:site_name" content="R’s Story">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About & Follow — R’s Story">
+  <meta property="og:description" content="Travel, Design & Little Joys.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js");setTimeout(function(){var d=document.documentElement;if(!d.classList.contains("reveal-ready"))d.classList.add("reveal-fallback")},3000);</script>
+</head>
+<body id="top" data-page="about" data-title-key="meta.about">
+  <a class="skip-link" href="#main" data-i18n="ui.skip">Skip to content</a>
+  <header class="site-header" data-site-header></header>
+  <noscript><p>Please enable JavaScript to see the links.</p></noscript>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__grid" data-reveal-group>
+        <div>
+          <p class="eyebrow" data-reveal data-i18n="about.eyebrow">About &amp; Follow</p>
+          <h1 class="display" data-reveal data-i18n="about.title">About R’s Story</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;" aria-label="Story">
+      <div class="container about-grid" data-reveal-group>
+        <!-- ★ 写真：assets/images/about/portrait.jpg（縦長 4:5 がおすすめ） -->
+        <div class="about-portrait" data-reveal>
+          <div class="media" data-static>
+            <img src="assets/images/about/portrait.jpg" alt="A portrait or a favourite travel moment of R" data-i18n-alt="about.portraitAlt" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="about-text" data-reveal>
+          <p class="lead-serif" data-i18n="about.lead">Travel, Design &amp; Little Joys.</p>
+          <p data-i18n="about.p1">R’s Story is an online magazine about travel, design, beautiful streets, cafés and the small discoveries of everyday life.</p>
+          <p data-i18n="about.p2">Through photographs, films and letters, it hopes to offer a little inspiration — so that you might enjoy your own story a little more, wherever you are.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight section--paper" aria-labelledby="about-follow">
+      <div class="container two-col" data-reveal-group>
+        <h2 id="about-follow" class="title-lg" data-reveal data-i18n="about.followTitle">Follow the story</h2>
+        <div id="about-social" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ（config.js の contact に設定したときだけ表示） -->
+    <section class="section section--tight" id="about-contact" aria-labelledby="about-contact-title" hidden>
+      <div class="container two-col">
+        <h2 id="about-contact-title" class="title-lg" data-reveal data-i18n="about.contactTitle">Contact</h2>
+        <div class="contact-box" id="about-contact-body" data-reveal>
+          <p data-i18n="about.contactText">For collaborations and enquiries, please get in touch.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-site-footer></footer>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/about.js" defer></script>
+</body>
+</html>

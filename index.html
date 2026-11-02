@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>R’s Story — Travel, Design &amp; Little Joys</title>
+  <meta name="description" content="R’s Story is a bilingual online travel magazine about travel, design, beautiful streets, cafés and the little joys of everyday life.">
+  <meta name="theme-color" content="#F8F5F0">
+  <!-- SNSでシェアしたときの表示 -->
+  <meta property="og:site_name" content="R’s Story">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="R’s Story — Travel, Design & Little Joys">
+  <meta property="og:description" content="A little inspiration for your own story.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js");setTimeout(function(){var d=document.documentElement;if(!d.classList.contains("reveal-ready"))d.classList.add("reveal-fallback")},3000);</script>
+</head>
+<body id="top" data-page="home" data-title-key="meta.home">
+  <a class="skip-link" href="#main" data-i18n="ui.skip">Skip to content</a>
+  <header class="site-header" data-site-header></header>
+  <noscript><p>Please enable JavaScript to use the menu, language switch and Little Joys.</p></noscript>
+
+  <main id="main">
+
+    <!-- ===== ファーストビュー ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- ★ メイン写真：assets/images/home/hero.jpg
+           いまは切手コラージュのバナー（16:9）を、切り取らずに全体表示しています（hero__frame--fit）。
+           普通の風景写真に替えて画面いっぱいに表示したいときは、下の「 hero__frame--fit」を消してください。 -->
+      <div class="hero__frame hero__frame--fit">
+        <div class="media" data-static>
+          <img src="assets/images/home/hero.jpg" alt="A collage of travel photos framed like postage stamps around the R’s Story logo, on soft pink" data-i18n-alt="home.hero.alt" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+      <div class="hero__card">
+        <p class="eyebrow" data-i18n="home.hero.eyebrow">An online travel magazine</p>
+        <h1 id="hero-title" class="display hero__title keep-en">Travel, Design &amp; Little&nbsp;Joys</h1>
+        <p class="hero__sub" data-i18n="home.hero.sub">A little inspiration for your own story.</p>
+        <div class="hero__actions">
+          <a class="link-arrow" href="journal.html" data-i18n="home.hero.cta">Begin the journey</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 最新のYouTube動画（films.js の1本目）— トップ写真のすぐ下 ===== -->
+    <section class="section section--tight section--paper" aria-labelledby="home-film-title">
+      <div class="container">
+        <div class="feature-film" id="home-film" data-reveal-group>
+          <!-- home.js が動画を表示します -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 導入文 ===== -->
+    <section class="section intro" aria-label="Welcome">
+      <div class="container" data-reveal-group>
+        <span class="intro__mark" aria-hidden="true" data-reveal></span>
+        <p class="eyebrow" data-reveal data-i18n="home.intro.eyebrow">Welcome</p>
+        <p class="intro__text" data-reveal data-i18n="home.intro.text">Beautiful streets, quiet cafés, thoughtful design and the small discoveries of everyday life — collected slowly, so you might feel like enjoying your own story a little more.</p>
+        <!-- ★ オリジナルイラスト：assets/images/illustrations/walking-in-paris.webp -->
+        <figure class="intro__art" data-reveal>
+          <img src="assets/images/illustrations/walking-in-paris.webp" width="2000" height="1506" loading="lazy" decoding="async"
+               alt="A hand-drawn illustration of a woman in a striped top walking a white fluffy dog past the Eiffel Tower" data-i18n-alt="home.intro.artAlt">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== 写真ギャラリー（assets/js/data/journal.js の最初の都市の写真を表示） ===== -->
+    <section class="section" id="gallery" aria-labelledby="home-journal-title">
+      <div class="container">
+        <div class="section-head" data-reveal-group>
+          <div class="section-head__text">
+            <p class="eyebrow" data-reveal data-i18n="home.journal.eyebrow">Gallery</p>
+            <h2 id="home-journal-title" class="title-xl" data-reveal data-i18n="home.journal.title">A summer in Copenhagen</h2>
+            <p data-reveal data-i18n="home.journal.text">Slow lunches, beautiful chairs, blue-and-white porcelain and long summer light. Select a photo to view it larger.</p>
+          </div>
+          <a class="link-arrow" href="journal.html" data-reveal data-i18n="home.journal.cta">Open the journal</a>
+        </div>
+        <div id="home-journal">
+          <!-- home.js が写真ギャラリーを表示します -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Little Joys の紹介 ===== -->
+    <section class="section section--pink" aria-labelledby="home-joys-title">
+      <div class="container">
+        <div class="section-head" data-reveal-group>
+          <div class="section-head__text">
+            <p class="eyebrow" data-reveal data-i18n="home.joys.eyebrow">Little Joys</p>
+            <h2 id="home-joys-title" class="title-xl" data-reveal data-i18n="home.joys.title">How are you feeling today?</h2>
+            <p data-reveal data-i18n="home.joys.text">Choose a mood and receive a photograph and a few gentle words, chosen just for this moment.</p>
+          </div>
+          <a class="link-arrow" href="little-joys.html" data-reveal data-i18n="home.joys.cta">Find a little joy</a>
+        </div>
+        <ul class="mood-links" data-reveal-group>
+          <li data-reveal><a href="little-joys.html?mood=calm"><span class="mood-links__num">01</span><span class="mood-links__name">A Little Calm</span><span class="mood-links__desc" data-i18n="mood.calm.desc">For a quieter heart</span></a></li>
+          <li data-reveal><a href="little-joys.html?mood=escape"><span class="mood-links__num">02</span><span class="mood-links__name">A Little Escape</span><span class="mood-links__desc" data-i18n="mood.escape.desc">When you long to travel</span></a></li>
+          <li data-reveal><a href="little-joys.html?mood=beauty"><span class="mood-links__num">03</span><span class="mood-links__name">A Little Beauty</span><span class="mood-links__desc" data-i18n="mood.beauty.desc">To see something beautiful</span></a></li>
+          <li data-reveal><a href="little-joys.html?mood=joy"><span class="mood-links__num">04</span><span class="mood-links__name">A Little Joy</span><span class="mood-links__desc" data-i18n="mood.joy.desc">For a spark of happiness</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Substack（Letters from R）の紹介 ===== -->
+    <section class="section" aria-labelledby="home-letters-title">
+      <div class="container letters-teaser" data-reveal-group>
+        <p class="letters-teaser__quote" data-reveal aria-hidden="true">Letters<br>from R</p>
+        <div>
+          <p class="eyebrow" data-reveal data-i18n="home.letters.eyebrow">Letters from R</p>
+          <h2 id="home-letters-title" class="title-lg" data-reveal data-i18n="home.letters.title">Slow letters on travel &amp; design</h2>
+          <p data-reveal data-i18n="home.letters.text" style="color: var(--color-text-soft); margin-top: 1rem;">Longer stories, favourite places and design notes, delivered by Substack — a quiet corner to read with a cup of coffee.</p>
+          <div class="letters-teaser__actions" data-reveal id="home-letters-actions">
+            <a class="btn" href="letters.html" data-i18n="home.letters.cta">Read the letters</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SNSリンク（URLは config.js で設定） ===== -->
+    <section class="section section--tight section--stone" aria-labelledby="home-follow-title">
+      <div class="container">
+        <div class="section-head" data-reveal-group>
+          <div class="section-head__text">
+            <p class="eyebrow" data-reveal data-i18n="home.follow.eyebrow">Follow the story</p>
+            <h2 id="home-follow-title" class="title-lg" data-reveal data-i18n="home.follow.title">Wherever you like to wander</h2>
+          </div>
+        </div>
+        <div id="home-follow" data-reveal></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" data-site-footer></footer>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/data/journal.js" defer></script>
+  <script src="assets/js/data/films.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/gallery.js" defer></script>
+  <script src="assets/js/home.js" defer></script>
+</body>
+</html>

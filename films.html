@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Films — R’s Story</title>
+  <meta name="description" content="Travel films from R’s Story on YouTube — slow journeys through cities, cafés and design.">
+  <meta name="theme-color" content="#F8F5F0">
+  <meta property="og:site_name" content="R’s Story">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Films — R’s Story">
+  <meta property="og:description" content="Slow travel films on YouTube.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js");setTimeout(function(){var d=document.documentElement;if(!d.classList.contains("reveal-ready"))d.classList.add("reveal-fallback")},3000);</script>
+</head>
+<body id="top" data-page="films" data-title-key="meta.films">
+  <a class="skip-link" href="#main" data-i18n="ui.skip">Skip to content</a>
+  <header class="site-header" data-site-header></header>
+  <noscript><p>Please enable JavaScript to view the films.</p></noscript>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__grid" data-reveal-group>
+        <div>
+          <p class="eyebrow" data-reveal data-i18n="films.eyebrow">Travel films on YouTube</p>
+          <h1 class="display" data-reveal data-i18n="films.title">Films</h1>
+        </div>
+        <p class="lead" data-reveal data-i18n="films.lead">Moving pictures of slow journeys — cities, cafés, design and the quiet joys along the way.</p>
+      </div>
+    </section>
+
+    <!-- 動画は films.js が assets/js/data/films.js から作ります -->
+    <section class="section section--tight section--paper" aria-labelledby="films-latest-label">
+      <div class="container">
+        <p class="eyebrow" id="films-latest-label" data-i18n="films.latest">Latest Film</p>
+        <div id="films-latest"></div>
+      </div>
+    </section>
+
+    <section class="section" id="films-more-section" aria-labelledby="films-more-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="films-more-title" class="title-lg" data-reveal data-i18n="films.more">More Films</h2>
+        </div>
+        <div class="film-grid" id="films-more" data-reveal-group></div>
+      </div>
+    </section>
+
+    <section class="section section--tight section--pink cta-band" aria-labelledby="films-channel-title">
+      <div class="container" data-reveal-group>
+        <h2 id="films-channel-title" class="title-lg" data-reveal data-i18n="films.channelTitle">Subscribe for new journeys</h2>
+        <p data-reveal data-i18n="films.channelText">New films are shared on YouTube first.</p>
+        <div data-reveal id="films-channel"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-site-footer></footer>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/data/films.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/films.js" defer></script>
+</body>
+</html>

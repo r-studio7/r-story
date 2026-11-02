@@ -1,0 +1,2 @@
+いまの Little Joys はギャラリー（assets/images/journal/copenhagen/）の写真を使っています。
+別の写真にしたいときはここに入れて、assets/js/data/joys.js の image を書き換えてください。

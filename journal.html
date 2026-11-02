@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travel Journal — R’s Story</title>
+  <meta name="description" content="City-by-city photo stories from R’s Story — starting with Copenhagen.">
+  <meta name="theme-color" content="#F8F5F0">
+  <meta property="og:site_name" content="R’s Story">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Travel Journal — R’s Story">
+  <meta property="og:description" content="City-by-city photo stories, starting with Copenhagen.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js");setTimeout(function(){var d=document.documentElement;if(!d.classList.contains("reveal-ready"))d.classList.add("reveal-fallback")},3000);</script>
+</head>
+<body id="top" data-page="journal" data-title-key="meta.journal">
+  <a class="skip-link" href="#main" data-i18n="ui.skip">Skip to content</a>
+  <header class="site-header" data-site-header></header>
+  <noscript><p>Please enable JavaScript to view the photo journal.</p></noscript>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__grid" data-reveal-group>
+        <div>
+          <p class="eyebrow" data-reveal data-i18n="journal.eyebrow">Photo stories by city</p>
+          <h1 class="display" data-reveal data-i18n="journal.title">Travel Journal</h1>
+        </div>
+        <p class="lead" data-reveal data-i18n="journal.lead">A slowly growing collection of cities, seen through soft light, small details and unhurried walks.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- 都市の一覧と写真は journal.js が assets/js/data/journal.js から作ります -->
+      <nav class="city-index" id="city-index" data-reveal data-i18n-aria="journal.cities" aria-label="Cities"></nav>
+      <div id="cities"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer" data-site-footer></footer>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/data/journal.js" defer></script>
+  <script src="assets/js/data/films.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/gallery.js" defer></script>
+  <script src="assets/js/journal.js" defer></script>
+</body>
+</html>

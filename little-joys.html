@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Little Joys — R’s Story</title>
+  <meta name="description" content="Choose your mood and receive a photograph and a few gentle words — a little interactive moment from R’s Story.">
+  <meta name="theme-color" content="#F8F5F0">
+  <meta property="og:site_name" content="R’s Story">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Little Joys — R’s Story">
+  <meta property="og:description" content="How are you feeling right now? Choose a mood and find a little joy.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js");setTimeout(function(){var d=document.documentElement;if(!d.classList.contains("reveal-ready"))d.classList.add("reveal-fallback")},3000);</script>
+</head>
+<body id="top" data-page="joys" data-title-key="meta.joys">
+  <a class="skip-link" href="#main" data-i18n="ui.skip">Skip to content</a>
+  <header class="site-header" data-site-header></header>
+  <noscript><p>Please enable JavaScript to use Little Joys.</p></noscript>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__grid" data-reveal-group>
+        <div>
+          <p class="eyebrow" data-reveal data-i18n="joys.eyebrow">An interactive moment</p>
+          <h1 class="display keep-en" data-reveal>Little Joys</h1>
+        </div>
+        <p class="lead" data-reveal data-i18n="joys.lead">How are you feeling right now? Choose a mood, and let a photograph and a few words keep you company.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;" aria-labelledby="joys-choose">
+      <div class="container">
+        <h2 id="joys-choose" class="eyebrow" data-i18n="joys.choose">Choose your mood</h2>
+
+        <!-- 4つの気分ボタン（内容は assets/js/data/joys.js） -->
+        <div class="moods" role="group" aria-labelledby="joys-choose" data-reveal-group>
+          <button type="button" class="mood-btn" data-mood="calm" aria-pressed="false" data-reveal>
+            <span class="mood-btn__check" aria-hidden="true"></span>
+            <span class="mood-btn__num" aria-hidden="true">01</span>
+            <span class="mood-btn__name">A Little Calm</span>
+            <span class="mood-btn__desc" data-i18n="mood.calm.desc">For a quieter heart</span>
+          </button>
+          <button type="button" class="mood-btn" data-mood="escape" aria-pressed="false" data-reveal>
+            <span class="mood-btn__check" aria-hidden="true"></span>
+            <span class="mood-btn__num" aria-hidden="true">02</span>
+            <span class="mood-btn__name">A Little Escape</span>
+            <span class="mood-btn__desc" data-i18n="mood.escape.desc">When you long to travel</span>
+          </button>
+          <button type="button" class="mood-btn" data-mood="beauty" aria-pressed="false" data-reveal>
+            <span class="mood-btn__check" aria-hidden="true"></span>
+            <span class="mood-btn__num" aria-hidden="true">03</span>
+            <span class="mood-btn__name">A Little Beauty</span>
+            <span class="mood-btn__desc" data-i18n="mood.beauty.desc">To see something beautiful</span>
+          </button>
+          <button type="button" class="mood-btn" data-mood="joy" aria-pressed="false" data-reveal>
+            <span class="mood-btn__check" aria-hidden="true"></span>
+            <span class="mood-btn__num" aria-hidden="true">04</span>
+            <span class="mood-btn__name">A Little Joy</span>
+            <span class="mood-btn__desc" data-i18n="mood.joy.desc">For a spark of happiness</span>
+          </button>
+        </div>
+
+        <!-- 選んだ気分の写真とメッセージ -->
+        <article class="joy-stage" id="joy-stage" data-reveal>
+          <div class="joy-stage__media" id="joy-media"></div>
+          <div class="joy-stage__body" id="joy-body" aria-live="polite">
+            <span class="joy-stage__idle-mark" aria-hidden="true"></span>
+            <h3 class="title-md" data-i18n="joys.idleTitle">A little moment, just for you</h3>
+            <p style="color: var(--color-text-soft); margin-top: 0.8rem;" data-i18n="joys.idleText">Select one of the four moods above to begin.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-site-footer></footer>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/data/films.js" defer></script>
+  <script src="assets/js/data/joys.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/joys.js" defer></script>
+</body>
+</html>
