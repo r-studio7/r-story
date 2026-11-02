@@ -472,15 +472,15 @@ html[lang="ja"] .media__ph-desc { font-family: var(--font-serif-ja); font-style:
 }
 /* トップの見出しは、どの画面幅でも必ず1行に収める（狭いスマホでは自動で少し小さくなる） */
 .hero__title {
-  font-size: min(clamp(1.55rem, 2.6vw, 2.25rem), calc((100vw - 88px) / 11));
+  font-size: min(clamp(1.4rem, 2.3vw, 1.95rem), calc((100vw - 88px) / 11));
   white-space: nowrap;
   line-height: 1.15;
   margin: 0 0 0.2em;
 }
 /* トップのカード内の文字の間隔
    小見出し → タイトル → サブタイトルはひとまとまりで近く、ボタンだけ少し離す */
-.hero__card .eyebrow { font-size: 0.64rem; letter-spacing: 0.26em; margin: 0 0 0.55rem; line-height: 1.4; }
-html[lang="ja"] .hero__card .eyebrow { font-size: 0.68rem; letter-spacing: 0.18em; }
+.hero__card .eyebrow { font-size: 0.58rem; letter-spacing: 0.26em; margin: 0 0 0.55rem; line-height: 1.4; }
+html[lang="ja"] .hero__card .eyebrow { font-size: 0.64rem; letter-spacing: 0.18em; }
 .hero__sub {
   font-family: var(--font-serif-en);
   font-style: italic;
