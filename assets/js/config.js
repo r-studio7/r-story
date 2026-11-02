@@ -16,7 +16,7 @@ window.SITE_CONFIG = {
   /* 外部サービスのURL */
   links: {
     youtube:   "https://www.youtube.com/@r-story-travel",
-    instagram: "",   // 例: "https://www.instagram.com/あなたのID/"
+    instagram: "https://www.instagram.com/r_story_travel/",
     pinterest: "",   // 例: "https://www.pinterest.com/あなたのID/"
     substack:  "",   // 例: "https://あなたの名前.substack.com"
     substackSubscribe: "" // 購読ページ。例: "https://あなたの名前.substack.com/subscribe"
