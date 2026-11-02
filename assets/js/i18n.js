@@ -56,14 +56,15 @@ window.I18N = {
 
   "home.intro.artAlt":  { en: "A hand-drawn illustration of a woman in a striped top walking a white fluffy dog past the Eiffel Tower", ja: "ボーダーのトップスの女性が、白いふわふわの犬とエッフェル塔のそばを散歩する手描きイラスト" },
 
-  "home.film.eyebrow": { en: "Latest Film", ja: "最新の動画" },
+  "home.film.eyebrow": { en: "Featured Film", ja: "おすすめの動画" },
   "home.film.cta":     { en: "See all films", ja: "動画一覧を見る" },
-  "home.film.empty":   { en: "The latest film will appear here soon.", ja: "最新の動画がここに表示されます。" },
+  "home.film.empty":   { en: "A featured film will appear here soon.", ja: "おすすめの動画がここに表示されます。" },
 
   "home.journal.eyebrow": { en: "Gallery · July 2026", ja: "ギャラリー · 2026年7月" },
   "home.journal.title":   { en: "A summer in Copenhagen", ja: "コペンハーゲンの夏" },
   "home.journal.text":    { en: "Colourful harbours, beautiful chairs, quiet cafés and long summer light. Select a photo to view it larger.", ja: "カラフルな港、美しい椅子、静かなカフェ、そして長い夏の光。写真を選ぶと大きく表示されます。" },
   "home.journal.cta":     { en: "Open the journal", ja: "ジャーナルを開く" },
+  "home.journal.all":     { en: "See all {n} photos of {city}", ja: "{city}の写真をすべて見る（{n}枚）" },
 
   "home.joys.eyebrow": { en: "Little Joys", ja: "リトル・ジョイ" },
   "home.joys.title":   { en: "How are you feeling today?", ja: "今日は、どんな気分ですか？" },
@@ -99,7 +100,7 @@ window.I18N = {
   "films.eyebrow":   { en: "Travel films on YouTube", ja: "YouTubeの旅の動画" },
   "films.title":     { en: "Films", ja: "フィルム" },
   "films.lead":      { en: "Moving pictures of slow journeys — cities, cafés, design and the quiet joys along the way.", ja: "ゆっくりした旅の映像。街、カフェ、デザイン、そして道中の静かな喜び。" },
-  "films.latest":    { en: "Latest Film", ja: "最新の動画" },
+  "films.latest":    { en: "Featured Film", ja: "おすすめの動画" },
   "films.more":      { en: "More Films", ja: "その他の動画" },
   "films.play":      { en: "Play video", ja: "動画を再生" },
   "films.watchYT":   { en: "Watch on YouTube", ja: "YouTubeで見る" },

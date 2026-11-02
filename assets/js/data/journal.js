@@ -31,9 +31,12 @@ window.JOURNAL_DATA = [
     cover: "assets/images/journal/copenhagen/norrlyst-lunch.jpg",
     mapsUrl: "",          // 例: "https://maps.app.goo.gl/xxxx"（ご自身で作成したリンク）
     filmId: "copenhagen", // films.js の id
+    /* Home のギャラリーに出す代表写真（ファイル名だけを書く。並びもこの順番）
+       ここにない写真は、Travel Journal のページで全部見られます。 */
+    homePhotos: ["nyhavn.jpg", "lille-bakery-interior.jpg", "bellevue-beach.jpg", "norrlyst-lunch.jpg"],
     /* 写真はすべて Canva の「Copenhagen Day1〜4」のデザインから、色加工済みのものを切り出しています。
        place … 写真の上に出る場所の名前 / alt … 写真の説明（読み上げ用にも使われます）
-       この順番のまま、Home のギャラリーにも表示されます。 */
+       この順番で Travel Journal に表示されます（Home に出す写真は上の homePhotos で選びます）。 */
     photos: [
       { image: "assets/images/journal/copenhagen/nyhavn.jpg",
         place: { en: "Nyhavn", ja: "ニューハウン" },

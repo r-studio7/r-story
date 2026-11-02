@@ -38,10 +38,24 @@
     ])));
   }
 
-  /* ---- 写真ギャラリー（最初の都市の写真すべて。押すと大きく表示） ---- */
+  /* ---- 写真ギャラリー（最初の都市の代表写真だけ。押すと大きく表示）
+     表示する写真は journal.js の homePhotos で選びます。
+     下の「すべて見る」リンクから Travel Journal の全写真へ ---- */
   var city = (window.JOURNAL_DATA || [])[0];
   if (city) {
-    document.getElementById("home-journal").appendChild(RS.gallery.grid(city.photos, city.name));
+    var picks = (city.homePhotos || []).map(function (name) {
+      return city.photos.filter(function (p) { return p.image.split("/").pop() === name; })[0];
+    }).filter(Boolean);
+    if (!picks.length) picks = city.photos.slice(0, 4);
+
+    var box = document.getElementById("home-journal");
+    box.appendChild(RS.gallery.grid(picks, city.name));
+
+    var more = el("a", { class: "link-arrow", href: "journal.html#" + city.id });
+    RS.bind(more, function (n) {
+      n.textContent = RS.t("home.journal.all").replace("{n}", city.photos.length).replace("{city}", RS.pick(city.name));
+    });
+    box.appendChild(el("p", { class: "home-gallery__more" }, [more]));
   }
 
   /* ---- Substack の購読ボタン ---- */

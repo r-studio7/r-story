@@ -135,16 +135,16 @@ body.is-lang-switching .site-footer { opacity: 0.25; }
 html[lang="ja"] .eyebrow { letter-spacing: 0.16em; font-size: 0.75rem; }
 
 .display {
-  font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
   line-height: 1.02;
 }
-.title-xl { font-size: clamp(2.3rem, 5vw, 4.2rem); }
-.title-lg { font-size: clamp(1.9rem, 3.6vw, 3rem); }
-.title-md { font-size: clamp(1.5rem, 2.4vw, 2rem); }
-html[lang="ja"] .display:not(.keep-en) { font-size: clamp(1.8rem, 4.2vw, 3.4rem); line-height: 1.3; }
-html[lang="ja"] .title-xl:not(.keep-en) { font-size: clamp(1.9rem, 4vw, 3.2rem); }
-html[lang="ja"] .title-lg:not(.keep-en) { font-size: clamp(1.55rem, 2.8vw, 2.3rem); }
-html[lang="ja"] .title-md:not(.keep-en) { font-size: clamp(1.25rem, 2vw, 1.6rem); }
+.title-xl { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+.title-lg { font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
+.title-md { font-size: clamp(1.2rem, 1.7vw, 1.5rem); }
+html[lang="ja"] .display:not(.keep-en) { font-size: clamp(1.5rem, 2.8vw, 2.3rem); line-height: 1.3; }
+html[lang="ja"] .title-xl:not(.keep-en) { font-size: clamp(1.35rem, 2.3vw, 1.9rem); }
+html[lang="ja"] .title-lg:not(.keep-en) { font-size: clamp(1.2rem, 1.8vw, 1.5rem); }
+html[lang="ja"] .title-md:not(.keep-en) { font-size: clamp(1.05rem, 1.4vw, 1.25rem); }
 .keep-en { font-family: var(--font-serif-en) !important; letter-spacing: 0 !important; line-height: 1.05 !important; }
 
 .lead {
@@ -462,9 +462,14 @@ html[lang="ja"] .media__ph-desc { font-family: var(--font-serif-ja); font-style:
   .hero__frame { height: 62svh; min-height: 360px; }
   .hero__card { margin-top: -72px; }
 }
-/* バナーのように「端まで全部見せたい」画像用（16:9のまま、切り取らずに表示） */
-.hero__frame.hero__frame--fit { height: auto; min-height: 0; max-height: none; aspect-ratio: 16 / 9; }
-@media (max-width: 640px) { .hero__frame--fit + .hero__card { margin-top: -24px; } }
+/* 切手コラージュのバナー用：上下のピンクの余白を切って、切手の帯を中心に横長で表示
+   （余白をもっと減らす → 4 / 1 の 4 を大きく。増やす → 小さく） */
+.hero__frame.hero__frame--fit { height: auto; min-height: 0; max-height: none; aspect-ratio: 4 / 1; }
+.hero__frame--fit + .hero__card { margin-top: -56px; }
+@media (max-width: 640px) {
+  .hero__frame.hero__frame--fit { aspect-ratio: 3 / 1; }
+  .hero__frame--fit + .hero__card { margin-top: -16px; }
+}
 .hero__title { margin-bottom: 0.4em; }
 .hero__sub {
   font-family: var(--font-serif-en);
@@ -525,6 +530,9 @@ html[lang="ja"] .intro__text { font-family: var(--font-serif-ja); font-size: cla
 .feature-film { display: grid; gap: 32px 64px; align-items: center; }
 @media (min-width: 900px) { .feature-film { grid-template-columns: 1.45fr 1fr; } }
 .feature-film__text h3 { margin-bottom: 0.6em; }
+/* 動画のタイトルは長いので、ほかの見出しより少し小さめ */
+.feature-film__text h2, .film-latest__text h2 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.45; }
+html[lang="ja"] .feature-film__text h2.title-lg, html[lang="ja"] .film-latest__text h2.title-lg { font-size: clamp(1.05rem, 1.4vw, 1.2rem); }
 .feature-film__text p { color: var(--color-text-soft); }
 .feature-film__actions { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 1.6rem; }
 
@@ -572,7 +580,7 @@ html[lang="ja"] .intro__text { font-family: var(--font-serif-ja); font-size: cla
 .letters-teaser__quote {
   font-family: var(--font-serif-en);
   font-style: italic;
-  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1;
 }
 .letters-teaser__actions { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; margin-top: 1.6rem; }
@@ -593,7 +601,7 @@ html[lang="ja"] .intro__text { font-family: var(--font-serif-ja); font-size: cla
   padding: 22px 0;
   text-decoration: none;
   font-family: var(--font-serif-en);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
   line-height: 1.2;
 }
 .social-list--large .ext-link__icon, .social-list--detailed .ext-link__icon { margin-left: auto; font-family: var(--font-sans); font-size: 1rem; }
@@ -647,8 +655,8 @@ html[lang="ja"] .city-index a { font-family: var(--font-serif-ja); font-size: 1.
 .city + .city { border-top: 1px solid var(--color-line); }
 .city__head { display: grid; gap: 24px 64px; margin-bottom: clamp(32px, 5vw, 56px); }
 @media (min-width: 900px) { .city__head { grid-template-columns: 1fr 1.1fr; align-items: end; } }
-.city__name { font-size: clamp(3rem, 8vw, 6.4rem); line-height: 0.95; }
-html[lang="ja"] .city__name { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.3; }
+.city__name { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1; }
+html[lang="ja"] .city__name { font-size: clamp(1.7rem, 3.2vw, 2.6rem); line-height: 1.3; }
 .city__country { display: block; margin-top: 0.8rem; }
 .city__intro { color: var(--color-text-soft); }
 .city__links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 1.2rem; }
@@ -1164,4 +1172,16 @@ main { animation: rs-fade 0.5s ease backwards; }
   .js .route[data-reveal] .route__reveal { stroke-dashoffset: 0; animation: none !important; }
   .js .route[data-reveal] .route__plane { opacity: 1; animation: none !important; }
   .btn:hover, .film-card:hover { transform: none; }
+}
+
+/* Home：ギャラリーの「すべての写真を見る」リンク */
+.home-gallery__more { margin-top: clamp(20px, 3vw, 32px); }
+/* Home：代表写真は、PCでは横1列・スマホでは2×2にそろえる */
+#home-journal .photo-grid::after { display: none; }
+@media (min-width: 760px) {
+  #home-journal .photo-grid { flex-wrap: nowrap; }
+}
+@media (max-width: 759px) {
+  #home-journal .photo-grid__item { flex: 1 1 calc(50% - 8px); }
+  #home-journal .photo-tile { aspect-ratio: 4 / 3; }
 }
