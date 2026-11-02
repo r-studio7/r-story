@@ -470,7 +470,12 @@ html[lang="ja"] .media__ph-desc { font-family: var(--font-serif-ja); font-style:
   .hero__frame.hero__frame--fit { aspect-ratio: 3 / 1; }
   .hero__frame--fit + .hero__card { margin-top: -16px; }
 }
-.hero__title { margin-bottom: 0.4em; font-size: clamp(1.55rem, 2.6vw, 2.25rem); }
+/* トップの見出しは、どの画面幅でも必ず1行に収める（狭いスマホでは自動で少し小さくなる） */
+.hero__title {
+  margin-bottom: 0.4em;
+  font-size: min(clamp(1.55rem, 2.6vw, 2.25rem), calc((100vw - 88px) / 11));
+  white-space: nowrap;
+}
 .hero__sub {
   font-family: var(--font-serif-en);
   font-style: italic;
