@@ -541,7 +541,7 @@ html[lang="ja"] .intro__text { font-family: var(--font-serif-ja); font-size: cla
 @media (min-width: 900px) { .feature-film { grid-template-columns: 1.45fr 1fr; } }
 .feature-film__text h3 { margin-bottom: 0.6em; }
 /* 動画のタイトルは長いので、ほかの見出しより少し小さめ */
-.feature-film__text h2, .film-latest__text h2 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.45; }
+.feature-film__text h2, .film-latest__text h2 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.4; margin-bottom: 0.9rem; }
 html[lang="ja"] .feature-film__text h2.title-lg, html[lang="ja"] .film-latest__text h2.title-lg { font-size: clamp(1.05rem, 1.4vw, 1.2rem); }
 .feature-film__text p { color: var(--color-text-soft); }
 .feature-film__actions { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 1.6rem; }
@@ -797,14 +797,14 @@ html[lang="ja"] .lightbox__caption { font: 400 0.95rem/1.7 var(--font-sans); }
 .film-player__poster .media img { transition: opacity 0.8s var(--ease), transform 1.1s var(--ease); }
 .film-player__play {
   position: absolute; left: 50%; top: 50%;
-  width: 76px; height: 76px; margin: -38px 0 0 -38px;
+  width: 48px; height: 48px; margin: -24px 0 0 -24px;
   border-radius: 50%;
   background: rgba(248, 245, 240, 0.9);
   transition: transform var(--dur) var(--ease), background-color var(--dur) var(--ease);
 }
 .film-player__play::after {
-  content: ""; position: absolute; left: 31px; top: 25px;
-  border-style: solid; border-width: 13px 0 13px 20px;
+  content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-38%, -50%);
+  border-style: solid; border-width: 8px 0 8px 12px;
   border-color: transparent transparent transparent var(--color-text);
 }
 @media (hover: hover) {
@@ -825,17 +825,17 @@ html[lang="ja"] .lightbox__caption { font: 400 0.95rem/1.7 var(--font-sans); }
 
 .film-latest { display: grid; gap: 28px 64px; align-items: center; }
 @media (min-width: 960px) { .film-latest { grid-template-columns: 1.7fr 1fr; } }
-.film-latest__text h2 { margin-bottom: 0.6em; }
+.film-latest__text h2 { margin-bottom: 0.9rem; }
 .film-latest__text p { color: var(--color-text-soft); }
 .film-links { display: flex; flex-wrap: wrap; gap: 6px 28px; margin-top: 1.2rem; }
 
 .film-grid { display: grid; gap: 48px 32px; }
 @media (min-width: 640px) { .film-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .film-grid { grid-template-columns: repeat(3, 1fr); } }
-.film-card h3 { font-size: 1.45rem; margin: 1.1rem 0 0.4rem; }
-html[lang="ja"] .film-card h3 { font-size: 1.15rem; }
+.film-card h3 { font-size: 1.3rem; line-height: 1.35; margin: 1.2rem 0 0.8rem; }
+html[lang="ja"] .film-card h3 { font-size: 1.08rem; line-height: 1.6; }
 .film-card p { color: var(--color-text-soft); font-size: 0.92rem; margin: 0; }
-.film-card .film-links { margin-top: 0.6rem; }
+.film-card .film-links { margin-top: 1.1rem; }
 .film-card:target .film-player { outline: 1px solid var(--color-text); outline-offset: 6px; }
 
 .cta-band { text-align: center; }
@@ -1194,4 +1194,10 @@ main { animation: rs-fade 0.5s ease backwards; }
 @media (max-width: 759px) {
   #home-journal .photo-grid__item { flex: 1 1 calc(50% - 8px); }
   #home-journal .photo-tile { aspect-ratio: 4 / 3; }
+}
+
+/* スマホでは再生マークをさらに少し小さく */
+@media (max-width: 640px) {
+  .film-player__play { width: 40px; height: 40px; margin: -20px 0 0 -20px; }
+  .film-player__play::after { border-width: 7px 0 7px 10px; }
 }
