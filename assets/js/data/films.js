@@ -30,6 +30,19 @@ window.FILMS_DATA = [
     journal: "copenhagen"          // 関連する Travel Journal の都市 id（なければ ""）
   },
   {
+    id: "copenhagen-day4",
+    youtube: "https://youtu.be/UkC7dm9h0-M",
+    title: {
+      en: "Copenhagen Travel Vlog Day 4 — Why I Fell in Love with Copenhagen: Bakeries, Michelin & Design",
+      ja: "コペンハーゲン旅行Vlog 4日目 — コペンハーゲンに恋した理由：ベーカリー、ミシュラン、デザイン"
+    },
+    description: {
+      en: "Day 4 in Copenhagen — bakeries, a Michelin meal and Danish design, and why this city stole my heart.",
+      ja: "コペンハーゲン4日目。ベーカリー、ミシュランの食事、デンマークデザイン。この街に心をつかまれた理由。"
+    },
+    journal: "copenhagen"
+  },
+  {
     id: "copenhagen-museums",
     youtube: "https://youtu.be/jUdUummmonA",
     title: {
