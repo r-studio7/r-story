@@ -1,149 +1,653 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>R’s Story — Travel, Design &amp; Little Joys</title>
-  <meta name="description" content="R’s Story is a bilingual online travel magazine about travel, design, beautiful streets, cafés and the little joys of everyday life.">
-  <meta name="theme-color" content="#F8F5F0">
-  <!-- SNSでシェアしたときの表示 -->
-  <meta property="og:site_name" content="R’s Story">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="R’s Story — Travel, Design & Little Joys">
-  <meta property="og:description" content="A little inspiration for your own story.">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script>document.documentElement.classList.add("js");setTimeout(function(){var d=document.documentElement;if(!d.classList.contains("reveal-ready"))d.classList.add("reveal-fallback")},3000);</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R’s Story — Travel, Design &amp; Little Joys</title>
+<meta name="description" content="R’s Story is an online travel magazine: films, travel diaries and little joys from Copenhagen, Paris and beyond.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap">
+<style>
+@keyframes rsTwinkle{0%,100%{opacity:.15;transform:scale(.55) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(25deg)}}
+.rs-twinkle{animation:rsTwinkle 3.4s ease-in-out infinite;filter:drop-shadow(0 0 3px rgba(255,255,255,0.9))}
+.rs-curtain{transition:width 2s cubic-bezier(.65,0,.35,1) .4s}
+.fv.rs-sec:not(.in) .rs-curtain{width:50% !important}
+.fv.rs-sec{transform:none !important;filter:none !important}
+
+body{margin:0}
+a{color:#5a4a3a}a:hover{color:#3d3227}
+@keyframes rsReveal{from{-webkit-mask-size:0px 0px;mask-size:0px 0px}to{-webkit-mask-size:2990px 2990px;mask-size:2990px 2990px}}
+.rs-mask{-webkit-mask-image:radial-gradient(circle closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(circle closest-side,#000 55%,transparent 100%);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
+.pc .rs-reveal{animation:rsReveal 5s ease .2s both}
+@keyframes rsZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.rs-zoom{animation:rsZoom 12s cubic-bezier(.215,.61,.355,1) both}
+@keyframes rsBlurIn{from{opacity:0;filter:blur(6px);transform:translateY(10px)}to{opacity:1;filter:blur(0);transform:none}}
+.rs-blur{animation:rsBlurIn 1.6s cubic-bezier(.215,.61,.355,1) both}
+.rs-h{animation-delay:.8s}.rs-t1{animation-delay:3.2s}.rs-t2{animation-delay:3.5s}.rs-t3{animation-delay:3.8s}.rs-t4{animation-delay:4.3s}
+@keyframes rsFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+.rs-float{animation:rsFloat 6s ease-in-out infinite}
+@keyframes rsBob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-3px) rotate(1.5deg)}}
+.rs-bob{animation:rsBob 2.8s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes rsDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.rs-drift{animation:rsDrift 7s ease-in-out infinite}
+@keyframes rsStroll{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.rs-stroll{animation:rsStroll 3.2s ease-in-out infinite}
+@keyframes rsTwinkle{0%,100%{opacity:.15;transform:scale(.55) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(25deg)}}
+.rs-twinkle{animation:rsTwinkle 3.4s ease-in-out infinite;filter:drop-shadow(0 0 3px rgba(255,255,255,0.9))}
+.rs-track{transition:transform .85s cubic-bezier(.25,1.15,.4,1);touch-action:pan-y;cursor:grab}
+.rs-track.is-drag{transition:none;cursor:grabbing}
+.rs-cap{display:none}.rs-cap.is-active{display:block;animation:rsCapIn .6s ease both}
+@keyframes rsCapIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rs-car-arrow{border-radius:999px;border:1px solid #5a4a3a;background:transparent;color:#5a4a3a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,color .3s,opacity .3s}
+.rs-car-arrow:hover:not(:disabled){background:#5a4a3a;color:#f5f1e8}
+.rs-car-arrow:disabled{opacity:.3;cursor:default}
+.rs-dot{height:8px;width:8px;padding:0;border:0;border-radius:999px;background:rgba(245,241,232,.55);cursor:pointer;transition:width .4s ease,background .4s ease}
+.rs-dot.is-active{width:32px;background:#f5f1e8}
+@media (prefers-reduced-motion: reduce){.rs-track,.rs-slide{transition:none}.rs-twinkle{animation:none}.rs-stroll{animation:none}.rs-reveal,.rs-zoom,.rs-blur,.rs-float,.rs-bob,.rs-drift{animation:none}.rs-mask{-webkit-mask-image:none;mask-image:none}}
+
+
+body{margin:0}
+a{color:#5a4a3a}a:hover{color:#3d3227}
+@keyframes rsRevealSp{from{-webkit-mask-size:0px 0px;mask-size:0px 0px}to{-webkit-mask-size:1150px 1150px;mask-size:1150px 1150px}}
+.rs-mask{-webkit-mask-image:radial-gradient(circle closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(circle closest-side,#000 55%,transparent 100%);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
+.sp .rs-reveal{animation:rsRevealSp 5s ease .2s both}
+@keyframes rsZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.rs-zoom{animation:rsZoom 12s cubic-bezier(.215,.61,.355,1) both}
+@keyframes rsBlurIn{from{opacity:0;filter:blur(6px);transform:translateY(10px)}to{opacity:1;filter:blur(0);transform:none}}
+.rs-blur{animation:rsBlurIn 1.6s cubic-bezier(.215,.61,.355,1) both}
+.rs-h{animation-delay:.8s}.rs-t1{animation-delay:3.2s}.rs-t2{animation-delay:3.5s}.rs-t3{animation-delay:3.8s}.rs-t4{animation-delay:4.3s}
+@keyframes rsFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-5px) rotate(-1.5deg)}}
+.rs-float{animation:rsFloat 6s ease-in-out infinite}
+@keyframes rsBob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-3px) rotate(1.5deg)}}
+.rs-bob{animation:rsBob 2.8s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes rsDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.rs-drift{animation:rsDrift 7s ease-in-out infinite}
+@keyframes rsStroll{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.rs-stroll{animation:rsStroll 3.2s ease-in-out infinite}
+@keyframes rsTwinkle{0%,100%{opacity:.15;transform:scale(.55) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(25deg)}}
+.rs-twinkle{animation:rsTwinkle 3.4s ease-in-out infinite;filter:drop-shadow(0 0 3px rgba(255,255,255,0.9))}
+.rs-track{transition:transform .85s cubic-bezier(.25,1.15,.4,1);touch-action:pan-y;cursor:grab}
+.rs-track.is-drag{transition:none;cursor:grabbing}
+.rs-cap{display:none}.rs-cap.is-active{display:block;animation:rsCapIn .6s ease both}
+@keyframes rsCapIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rs-car-arrow{border-radius:999px;border:1px solid #5a4a3a;background:transparent;color:#5a4a3a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,color .3s,opacity .3s}
+.rs-car-arrow:hover:not(:disabled){background:#5a4a3a;color:#f5f1e8}
+.rs-car-arrow:disabled{opacity:.3;cursor:default}
+.rs-dot{height:8px;width:8px;padding:0;border:0;border-radius:999px;background:rgba(245,241,232,.55);cursor:pointer;transition:width .4s ease,background .4s ease}
+.rs-dot.is-active{width:32px;background:#f5f1e8}
+@media (prefers-reduced-motion: reduce){.rs-track,.rs-slide{transition:none}.rs-twinkle{animation:none}.rs-stroll{animation:none}.rs-reveal,.rs-zoom,.rs-blur,.rs-float,.rs-bob,.rs-drift{animation:none}.rs-mask{-webkit-mask-image:none;mask-image:none}}
+
+body{background:#f5f1e8;font-family:Arimo,"Hiragino Sans",sans-serif}
+.bar{position:sticky;top:0;z-index:100;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:center;padding:10px 16px;background:rgba(228,221,209,.95);backdrop-filter:blur(6px);border-bottom:1px solid rgba(90,74,58,.15);color:#5a4a3a;font-size:13px}
+.bar button{font:inherit;font-size:13px;min-height:40px;padding:0 18px;border-radius:999px;border:1px solid rgba(90,74,58,.3);background:#f5f1e8;color:#5a4a3a;cursor:pointer}
+.bar button[aria-pressed="true"],.bar .primary{background:#5a4a3a;color:#f5f1e8;border-color:#5a4a3a}
+.bar .seg{display:flex;gap:6px}
+.bar .hint{font-size:12px;opacity:.85}
+.frame{position:relative;margin:0 auto;overflow:hidden}
+
+.stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.frame[hidden]{display:none}
+.rs-dust{position:fixed;z-index:200;pointer-events:none;width:4px;height:4px;border-radius:50%;background:#fff7f8;box-shadow:0 0 6px 1px rgba(213,143,166,.95)}
+.rs-heart{position:fixed;z-index:200;pointer-events:none;filter:drop-shadow(0 0 3px rgba(255,255,255,.85))}
+.rs-sec{opacity:0;transform:translateY(28px);filter:blur(4px);transition:opacity 1.4s cubic-bezier(.215,.61,.355,1),transform 1.4s cubic-bezier(.215,.61,.355,1),filter 1.4s cubic-bezier(.215,.61,.355,1)}
+.rs-sec.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion: reduce){.rs-sec{opacity:1;transform:none;filter:none;transition:none}}
+/* travel diary book v1 */
+.rs-bookwrap{position:relative;outline:none}
+.bk-scene{position:relative;display:flex;align-items:center;justify-content:center;perspective:2000px;perspective-origin:50% 40%;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.bk-scene:active{cursor:grabbing}
+.bk-book{position:relative;transform-style:preserve-3d;transform:rotateX(6deg)}
+.bk-book::after{content:"";position:absolute;left:4%;right:4%;bottom:-5%;height:8%;background:radial-gradient(ellipse at center,rgba(90,74,58,.28),transparent 70%);transform:translateZ(-40px);filter:blur(6px)}
+.bk-spread{position:absolute;inset:0;transform-style:preserve-3d}
+.bk-page{position:absolute;top:0;width:50%;height:100%;transform-style:preserve-3d}
+.bk-L{left:0;transform-origin:100% 50%}
+.bk-R{left:50%;transform-origin:0 50%}
+.bk-face,.bk-back{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.bk-L .bk-face{border-radius:3px 0 0 3px}.bk-R .bk-face{border-radius:0 3px 3px 0}
+.bk-back{transform:rotateY(180deg);background:#efe7d9;box-shadow:inset 0 0 0 .5px rgba(90,74,58,.18)}
+.bk-L .bk-back{border-radius:0 3px 3px 0}.bk-R .bk-back{border-radius:3px 0 0 3px}
+.bk-layer{position:absolute;inset:0;background:#f6f2ea}
+.bk-layer.end{background:#e8d8d5;display:flex;align-items:center;justify-content:center}
+.bk-endmark{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.6em;color:rgba(90,74,58,.55)}
+.bk-layer.paper{background:#f5f0e6 radial-gradient(rgba(164,138,114,.22) .7px,transparent .8px) 0 0/14px 14px}
+.bk-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.bk-gutter{position:absolute;top:0;bottom:0;width:10%;pointer-events:none}
+.bk-L .bk-gutter{right:0;background:linear-gradient(to left,rgba(60,45,30,.14),rgba(60,45,30,0))}
+.bk-R .bk-gutter{left:0;background:linear-gradient(to right,rgba(60,45,30,.14),rgba(60,45,30,0))}
+.bk-shade{position:absolute;inset:0;background:#3c2d1e;opacity:0;pointer-events:none}
+.bk-print{position:absolute;margin:0;box-sizing:border-box}
+.bk-print img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.bk-print.polaroid{background:#fbf8f2;padding:.55em .55em 0;box-shadow:0 .5em 1.2em rgba(40,30,20,.28)}
+.bk-print.polaroid figcaption{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.05em;color:#5a4a3a;text-align:center;padding:.35em 0 .55em}
+.bk-print.polaroid:not(:has(figcaption)){padding-bottom:2em}
+.bk-print.tape{box-shadow:0 .45em 1em rgba(40,30,20,.25)}
+.bk-print.tape::before{content:"";position:absolute;left:32%;top:-.7em;width:36%;height:1.4em;background:rgba(232,216,213,.85);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.bk-note{position:absolute;box-sizing:border-box;color:#5a4a3a;font-family:'Cormorant Garamond',Georgia,serif;line-height:1.25}
+.bk-note.card{background:rgba(245,241,232,.94);padding:.9em 1.1em;font-size:1.25em;box-shadow:0 .4em 1em rgba(40,30,20,.2)}
+.bk-note.card i{display:block;margin-top:.15em;font-size:1.05em}
+.bk-note.ink{font-size:1.7em;font-style:italic}
+.bk-note .k{display:block;font-family:Arimo,Arial,sans-serif;font-style:normal;font-size:.42em;letter-spacing:.24em;text-transform:uppercase;color:#a48a72;margin-bottom:.5em}
+.bk-note .sig{display:block;margin-top:.6em;font-size:.95em;color:#a48a72;font-style:italic}
+.bk-ctrl{display:flex;align-items:center;justify-content:center;gap:18px}
+.bk-ctrl button{width:40px;height:40px;border-radius:999px;border:1px solid rgba(90,74,58,.35);background:transparent;color:#5a4a3a;font-size:16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.bk-ctrl button:hover{background:rgba(90,74,58,.06)}
+.bk-meta{min-width:180px;text-align:center}
+.bk-label{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px;color:#5a4a3a}
+.bk-num{display:block;margin-top:2px;font-size:10px;letter-spacing:.22em;color:#a48a72}
+@media (prefers-reduced-motion:reduce){.bk-scene{perspective:none}}
+/* gallery hover v1 */
+.rs-gtile{position:relative;display:block;overflow:hidden;border-radius:2px}
+.rs-gtile img{display:block;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.rs-gtile::after{content:"";position:absolute;inset:0;background:rgba(245,241,232,0);transition:background .9s ease,backdrop-filter .9s ease;pointer-events:none}
+.rs-gnote{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:0 18px;color:#5a4a3a;opacity:0;transform:translateY(10px);transition:opacity .8s ease .15s,transform 1s cubic-bezier(.2,.7,.2,1) .15s;pointer-events:none}
+.rs-gnote i{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;line-height:1.2}
+.rs-gnote small{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#7a6350}
+a:hover>.rs-gtile img,a:focus-visible>.rs-gtile img{transform:scale(1.06)}
+a:hover>.rs-gtile::after,a:focus-visible>.rs-gtile::after{background:rgba(245,241,232,.5);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px)}
+a:hover>.rs-gtile .rs-gnote,a:focus-visible>.rs-gtile .rs-gnote{opacity:1;transform:none}
+body[data-gal="dark"] a:hover>.rs-gtile::after{background:rgba(52,40,28,.42);backdrop-filter:none}
+body[data-gal="dark"] .rs-gnote{color:#f5f1e8}body[data-gal="dark"] .rs-gnote small{color:#f5f1e8;opacity:.85}
+body[data-gal="none"] .rs-gnote{display:none}
+@media (prefers-reduced-motion:reduce){.rs-gtile img{transition:none}a:hover>.rs-gtile img{transform:none}}
+/* interactive hover button v1 */
+.rs-ihb{position:relative;display:inline-flex;border-radius:999px;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;border:1px solid #5a4a3a;box-sizing:border-box;color:#5a4a3a;background:transparent;text-decoration:none;white-space:nowrap}
+.ihb-fill{position:absolute;left:26px;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:999px;background:#5a4a3a;transform:scale(90);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:-1}
+.ihb-a{display:inline-flex;align-items:center;gap:10px;color:#f5f1e8;transition:transform .25s cubic-bezier(.4,0,.2,1),opacity .18s ease}
+.ihb-dot{width:6px;height:6px;border-radius:999px;background:#f5f1e8;flex:none}
+.ihb-b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;color:#5a4a3a;opacity:0;transform:translateX(-24px);transition:transform .25s cubic-bezier(.4,0,.2,1),opacity .18s ease}
+.rs-ihb:hover .ihb-fill,.rs-ihb:focus-visible .ihb-fill{transform:scale(0)}
+.rs-ihb:hover .ihb-a,.rs-ihb:focus-visible .ihb-a{transform:translateX(40px);opacity:0}
+.rs-ihb:hover .ihb-b,.rs-ihb:focus-visible .ihb-b{transform:none;opacity:1;transition-delay:.04s}
+@media (prefers-reduced-motion:reduce){.ihb-fill,.ihb-a,.ihb-b{transition:none}}
+/* mobile menu */
+.rs-menu{position:fixed;inset:0;z-index:999;background:#f5f1e8;display:none;flex-direction:column;align-items:center;justify-content:center;gap:26px;font-family:'Cormorant Garamond',Georgia,serif;font-size:30px}
+.rs-menu.open{display:flex}.rs-menu a{text-decoration:none;color:#5a4a3a}
+.rs-menu button{position:absolute;top:18px;right:20px;width:44px;height:44px;border:0;background:none;font-size:30px;color:#5a4a3a;cursor:pointer}
+</style>
 </head>
-<body id="top" data-page="home" data-title-key="meta.home">
-  <a class="skip-link" href="#main" data-i18n="ui.skip">Skip to content</a>
-  <header class="site-header" data-site-header></header>
-  <noscript><p>Please enable JavaScript to use the menu, language switch and Little Joys.</p></noscript>
+<body>
+<div class="frame pc" data-w="1440" data-h="7144"><div class="stage pc"><div style="width: 1440px; position: relative; overflow: hidden; background: var(--Buttermilk, #f5f1e8); color: var(--WarmBrown, #5a4a3a); font-family: Arimo, Helvetica, sans-serif">
 
-  <main id="main">
+  <!-- announcement -->
+  <a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; background: var(--Blush, #e8d8d5); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none">New film · A Design Lover’s Copenhagen Travel Diary <span aria-hidden="true">→</span></a>
 
-    <!-- ===== ファーストビュー ===== -->
-    <section class="hero" aria-labelledby="hero-title">
-      <!-- ★ メイン写真：assets/images/home/hero.jpg
-           いまは切手コラージュのバナー（16:9）を、切り取らずに全体表示しています（hero__frame--fit）。
-           普通の風景写真に替えて画面いっぱいに表示したいときは、下の「 hero__frame--fit」を消してください。 -->
-      <div class="hero__frame hero__frame--fit">
-        <div class="media" data-static>
-          <img src="assets/images/home/hero.jpg" alt="A collage of travel photos framed like postage stamps around the R’s Story logo, on soft pink" data-i18n-alt="home.hero.alt" fetchpriority="high" decoding="async">
-        </div>
-      </div>
-      <div class="hero__card">
-        <p class="eyebrow" data-i18n="home.hero.eyebrow">An online travel magazine</p>
-        <h1 id="hero-title" class="display hero__title keep-en">Travel, Design &amp; Little&nbsp;Joys</h1>
-        <p class="hero__sub" data-i18n="home.hero.sub">A little inspiration for your own story.</p>
-        <div class="hero__actions">
-          <a class="link-arrow" href="journal.html" data-i18n="home.hero.cta">Begin the journey</a>
-        </div>
-      </div>
-    </section>
+  <!-- header -->
+  <header class="rs-blur rs-h" style="height: 104px; box-sizing: border-box; padding: 0 64px; display: flex; align-items: center; justify-content: space-between">
+    <a href="./" style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 30px; text-decoration: none">R’s Story</a>
+    <nav aria-label="Main" style="display: flex; gap: 36px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase">
+      <a href="#about" style="text-decoration: none; min-height: 44px; display: flex; align-items: center">About</a>
+      <a href="journal.html" style="text-decoration: none; min-height: 44px; display: flex; align-items: center">Travel Journal</a>
+      <a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="text-decoration: none; min-height: 44px; display: flex; align-items: center">Films</a>
+      <a href="little-joys.html" style="text-decoration: none; min-height: 44px; display: flex; align-items: center">Little Joys</a>
+      <a href="letters.html" style="text-decoration: none; min-height: 44px; display: flex; align-items: center">Letters</a>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 20px; font-size: 11px; letter-spacing: 0.14em">
+      <span><a href="./" style="text-decoration: none; border-bottom: 1px solid #5a4a3a; padding-bottom: 2px">EN</a> <span style="color: #a48a72">/</span> <a href="#ja" style="text-decoration: none">日本語</a></span>
+      <a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" aria-label="R's Story on YouTube" style="width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(90,74,58,0.22); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z"></path></svg></a>
+      <a href="https://www.instagram.com/r_story_travel/" target="_blank" rel="noopener" aria-label="R's Story on Instagram" style="width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(90,74,58,0.22); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.7" fill="currentColor"></circle></svg></a>
+    </div>
+  </header>
 
-    <!-- ===== 最新のYouTube動画（films.js の1本目）— トップ写真のすぐ下 ===== -->
-    <section class="section section--tight section--paper" aria-labelledby="home-film-title">
-      <div class="container">
-        <div class="feature-film" id="home-film" data-reveal-group>
-          <!-- home.js が動画を表示します -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 導入文 ===== -->
-    <section class="section intro" aria-label="Welcome">
-      <div class="container" data-reveal-group>
-        <span class="intro__mark" aria-hidden="true" data-reveal></span>
-        <p class="eyebrow" data-reveal data-i18n="home.intro.eyebrow">Welcome</p>
-        <p class="intro__text" data-reveal data-i18n="home.intro.text">Beautiful streets, quiet cafés, thoughtful design and the small discoveries of everyday life — collected slowly, so you might feel like enjoying your own story a little more.</p>
-        <!-- ★ オリジナルイラスト：assets/images/illustrations/walking-in-paris.webp -->
-        <figure class="intro__art" data-reveal>
-          <img src="assets/images/illustrations/walking-in-paris.webp" width="2000" height="1506" loading="lazy" decoding="async"
-               alt="A hand-drawn illustration of a woman in a striped top walking a white fluffy dog past the Eiffel Tower" data-i18n-alt="home.intro.artAlt">
-        </figure>
-      </div>
-    </section>
-
-    <!-- ===== 写真ギャラリー（assets/js/data/journal.js の最初の都市の写真を表示） ===== -->
-    <section class="section" id="gallery" aria-labelledby="home-journal-title">
-      <div class="container">
-        <div class="section-head" data-reveal-group>
-          <div class="section-head__text">
-            <p class="eyebrow" data-reveal data-i18n="home.journal.eyebrow">Gallery</p>
-            <h2 id="home-journal-title" class="title-xl" data-reveal data-i18n="home.journal.title">A summer in Copenhagen</h2>
-            <p data-reveal data-i18n="home.journal.text">Slow lunches, beautiful chairs, blue-and-white porcelain and long summer light. Select a photo to view it larger.</p>
+  <!-- hero -->
+  <div class="hv"><section aria-label="Welcome to R's Story" style="height: 680px; box-sizing: border-box; padding: 0 64px; position: relative">
+    <div style="position: relative; height: 560px">
+      <div class="rs-mask rs-reveal" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-radius: 2px; overflow: hidden; background: var(--Blush, #e8d8d5); display: flex; flex-direction: column; justify-content: center; align-items: center">
+        <img class="rs-twinkle" src="images/star2.png" alt="" style="position: absolute; left: 992px; top: 64px; width: 19px; height: 19px; animation-duration: 3.5s; animation-delay: -0.6s"><img class="rs-twinkle" src="images/star2.png" alt="" style="position: absolute; left: 208px; top: 436px; width: 18px; height: 18px; animation-duration: 4.0s; animation-delay: -1.9s"><img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 501px; top: 64px; width: 19px; height: 19px; animation-duration: 3.0s; animation-delay: -1.7s"><img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 767px; top: 420px; width: 15px; height: 15px; animation-duration: 2.8s; animation-delay: -2.5s"><img class="rs-twinkle" src="images/star2.png" alt="" style="position: absolute; left: 177px; top: 75px; width: 16px; height: 16px; animation-duration: 3.5s; animation-delay: -4.0s"><img class="rs-twinkle" src="images/star2.png" alt="" style="position: absolute; left: 1066px; top: 438px; width: 24px; height: 24px; animation-duration: 3.0s; animation-delay: -0.5s"><img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 451px; top: 420px; width: 19px; height: 19px; animation-duration: 4.6s; animation-delay: -0.9s"><img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 629px; top: 244px; width: 19px; height: 19px; animation-duration: 4.3s; animation-delay: -3.0s"><div style="width: 1040px; margin-bottom: 48px; display: flex; flex-direction: column; align-items: center; text-align: center">
+          <p style="margin: 0; font-size: 14px; letter-spacing: 0.26em; text-transform: uppercase">An online travel magazine</p>
+          <div style="margin-top: 14px; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; column-gap: 30px; row-gap: 4px">
+            <h1 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: 68px; line-height: 1; letter-spacing: 0.02em">R’s Story</h1>
+            <p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.1">Travel, Design &amp; Little Joys</p>
           </div>
-          <a class="link-arrow" href="journal.html" data-reveal data-i18n="home.journal.cta">Open the journal</a>
-        </div>
-        <div id="home-journal">
-          <!-- home.js が写真ギャラリーを表示します -->
-        </div>
+        </div><div style="width: 1040px; display: flex; justify-content: space-between; align-items: center"><div class="rs-drift" style="flex: none; animation-delay: -0.0s"><img src="images/stamp-cupcakes.png" alt="Stamp-framed photo of little cakes in a café" style="display: block; height: 140px; width: 139px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -0.9s"><img src="images/stamp-interior.png" alt="Stamp-framed photo of a bright Danish living room" style="display: block; height: 140px; width: 108px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -1.8s"><img src="images/stamp-courtyard.png" alt="Stamp-framed photo of a leafy courtyard café" style="display: block; height: 140px; width: 139px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -2.7s"><img src="images/stamp-shopfront.png" alt="Stamp-framed photo of a Copenhagen shopfront" style="display: block; height: 140px; width: 182px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -3.6s"><img src="images/stamp-flowers.png" alt="Stamp with a small illustrated bouquet" style="display: block; height: 119px; width: 120px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -4.5s"><img src="images/stamp-arcade.png" alt="Stamp-framed photo of an elegant Paris arcade" style="display: block; height: 140px; width: 109px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div></div><p style="margin: 40px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 26px">Bringing beautiful moments home to you</p>
       </div>
-    </section>
+    </div>
+    <div class="rs-blur rs-t4" aria-hidden="true" style="position: absolute; left: 64px; bottom: 40px; display: flex; align-items: center; gap: 14px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase"><span style="display: block; width: 48px; height: 1px; background: #a48a72"></span>Scroll</div>
+  </section></div>
 
-    <!-- ===== Little Joys の紹介 ===== -->
-    <section class="section section--pink" aria-labelledby="home-joys-title">
-      <div class="container">
-        <div class="section-head" data-reveal-group>
-          <div class="section-head__text">
-            <p class="eyebrow" data-reveal data-i18n="home.joys.eyebrow">Little Joys</p>
-            <h2 id="home-joys-title" class="title-xl" data-reveal data-i18n="home.joys.title">How are you feeling today?</h2>
-            <p data-reveal data-i18n="home.joys.text">Choose a mood and receive a photograph and a few gentle words, chosen just for this moment.</p>
+  <!-- featured film -->
+  <section aria-labelledby="welcome-h" style="height: 700px; box-sizing: border-box; padding: 64px 64px; display: flex; justify-content: center; align-items: center">
+    <div style="display: flex; flex-direction: column; align-items: center"><h2 id="welcome-h" style="margin: 0 0 32px; text-align: center; font-size: 17px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase">Welcome</h2><div class="rs-stroll" style="transform-origin: 50% 50%">
+    <article style="width: 980px; box-sizing: border-box; padding: 24px; background: #fbf9f4; border-radius: 4px; box-shadow: 0 10px 30px rgba(90,74,58,0.14); display: grid; grid-template-columns: 560px 1fr; gap: 0">
+      <img src="images/welcome-walk.jpg" alt="Illustration of a woman in a striped top walking her white bichon frisé past the colourful houses of Nyhavn" style="display: block; width: 560px; height: auto; border-radius: 2px">
+      <div style="position: relative; margin-left: 28px; padding-left: 28px; border-left: 1px solid rgba(90,74,58,0.18); display: flex; flex-direction: column">
+        <div style="display: flex; justify-content: flex-end; align-items: flex-start; position: relative; height: 120px">
+          <div style="position: absolute; right: 58px; top: 34px; transform: rotate(-8deg); z-index: 3; pointer-events: none"><svg aria-hidden="true" width="147" height="70" viewBox="0 0 210 100" style="display: block">
+<defs><path id="pmArcpc" d="M50,50 m-34,0 a34,34 0 1,1 68,0 a34,34 0 1,1 -68,0"></path></defs>
+<g fill="none" stroke="#5a4a3a" stroke-opacity="0.55" stroke-width="1.6"><circle cx="50" cy="50" r="44"></circle><circle cx="50" cy="50" r="27"></circle>
+<path d="M98 30 q14 -7 28 0 t28 0 t28 0 t28 0"></path><path d="M98 44 q14 -7 28 0 t28 0 t28 0 t28 0"></path><path d="M98 58 q14 -7 28 0 t28 0 t28 0 t28 0"></path><path d="M98 72 q14 -7 28 0 t28 0 t28 0 t28 0"></path></g>
+<text font-family="Arimo, sans-serif" font-size="9.5" letter-spacing="2.4" fill="#5a4a3a" fill-opacity="0.6"><textPath href="#pmArcpc">COPENHAGEN · DENMARK ·</textPath></text>
+<text x="50" y="47" text-anchor="middle" font-family="Arimo, sans-serif" font-size="9" letter-spacing="1" fill="#5a4a3a" fill-opacity="0.6">12 JUL</text>
+<text x="50" y="59" text-anchor="middle" font-family="Arimo, sans-serif" font-size="9" letter-spacing="1" fill="#5a4a3a" fill-opacity="0.6">2026</text></svg></div>
+          <img src="images/stamp-shopfront.png" alt="Stamp-framed photo of a Copenhagen shopfront" style="filter: drop-shadow(0 1px 1px rgba(90,74,58,0.38)) drop-shadow(0 3px 7px rgba(90,74,58,0.18)); position: relative; width: 110px; height: auto; transform: rotate(3deg)">
+        </div>
+        <div style="margin: auto 0"><p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.45">Beautiful streets, quiet cafés, thoughtful design and the small discoveries of everyday life — collected slowly, so you might feel like enjoying your own story a little more.</p>
+        <p style="margin: 10px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 22px; text-align: right">— with love, R</p></div>
+      </div>
+    </article>
+    </div></div>
+  </section>
+
+  <div class="fv" data-f="frame"><section id="film" aria-labelledby="film-h" style="height: 900px; box-sizing: border-box; padding: 88px 64px">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px">
+      <div>
+        <p style="margin: 0; font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase">Films</p>
+        <h2 id="film-h" style="margin: 16px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 46px; line-height: 1.1; white-space: nowrap">I fell in love with Copenhagen</h2>
+      </div>
+      <a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" class="rs-ihb" style="align-items: center; height: 48px; padding: 0 26px; box-sizing: border-box; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none"><span class="ihb-fill" aria-hidden="true"></span><span class="ihb-a"><span class="ihb-dot" aria-hidden="true"></span>See all films</span><span class="ihb-b" aria-hidden="true">See all films<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+    <div style="margin-top: 44px; display: flex; flex-direction: column; align-items: center; gap: 24px">
+      <div class="rs-carwrap" style="display: flex; align-items: center; gap: 40px"><button type="button" class="rs-car-arrow" data-car="prev" aria-label="Previous film" disabled style="width: 56px; height: 56px; flex: none; "><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 19l-7-7 7-7"></path></svg></button><div class="rs-car" style="position: relative; width: 960px; height: 540px; box-sizing: content-box; border: 3px solid #6b5847; border-radius: 6px; overflow: hidden; box-shadow: 0 14px 30px rgba(90,74,58,0.2)">
+        <div class="rs-track" style="display: flex; height: 100%"><a href="https://www.youtube.com/watch?v=UkC7dm9h0-M" style="flex: none; width: 100%; height: 100%; position: relative; display: block"><img src="images/film-day4.jpg" alt="Thumbnail of the Copenhagen travel film, Day 4" draggable="false" style="display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none"><span class="rs-play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 72px; height: 72px; margin: -36px 0 0 -36px; border-radius: 999px; background: rgba(245,241,232,0.92); display: flex; align-items: center; justify-content: center; transition: opacity .5s"><svg width="22" height="22" viewBox="0 0 24 24" fill="#5a4a3a"><path d="M8 5.5v13l10-6.5z"></path></svg></span></a><a href="https://www.youtube.com/watch?v=tMUZtCO81IM" style="flex: none; width: 100%; height: 100%; position: relative; display: block"><img src="images/film-day3.jpg" alt="Thumbnail of the Copenhagen travel film, Day 3" draggable="false" style="display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none"><span class="rs-play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 72px; height: 72px; margin: -36px 0 0 -36px; border-radius: 999px; background: rgba(245,241,232,0.92); display: flex; align-items: center; justify-content: center; transition: opacity .5s"><svg width="22" height="22" viewBox="0 0 24 24" fill="#5a4a3a"><path d="M8 5.5v13l10-6.5z"></path></svg></span></a><a href="https://www.youtube.com/watch?v=ZhzrqosA1ms" style="flex: none; width: 100%; height: 100%; position: relative; display: block"><img src="images/film-thumb.jpg" alt="Thumbnail of the Copenhagen travel film, Day 2" draggable="false" style="display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none"><span class="rs-play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 72px; height: 72px; margin: -36px 0 0 -36px; border-radius: 999px; background: rgba(245,241,232,0.92); display: flex; align-items: center; justify-content: center; transition: opacity .5s"><svg width="22" height="22" viewBox="0 0 24 24" fill="#5a4a3a"><path d="M8 5.5v13l10-6.5z"></path></svg></span></a><a href="https://www.youtube.com/watch?v=jUdUummmonA" style="flex: none; width: 100%; height: 100%; position: relative; display: block"><img src="images/film-day1.jpg" alt="Thumbnail of the Copenhagen travel film, Day 1" draggable="false" style="display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none"><span class="rs-play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 72px; height: 72px; margin: -36px 0 0 -36px; border-radius: 999px; background: rgba(245,241,232,0.92); display: flex; align-items: center; justify-content: center; transition: opacity .5s"><svg width="22" height="22" viewBox="0 0 24 24" fill="#5a4a3a"><path d="M8 5.5v13l10-6.5z"></path></svg></span></a></div>
+      </div><button type="button" class="rs-car-arrow" data-car="next" aria-label="Next film" style="width: 56px; height: 56px; flex: none; "><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button></div>
+      <div style="width: 960px; min-height: 80px"><div class="rs-cap is-active" style="text-align: center"><span style="display: block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase">Day 4 · Nov 2026 · 19 min</span><span style="display: block; margin-top: 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; line-height: 1.25">Why I fell in love with Copenhagen — Bakeries, Michelin &amp; Design</span></div><div class="rs-cap" style="text-align: center"><span style="display: block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase">Day 3 · Oct 2026 · 17 min</span><span style="display: block; margin-top: 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; line-height: 1.25">A Design Lover’s Day — Arne Jacobsen, Finn Juhl, Louisiana &amp; Cafés</span></div><div class="rs-cap" style="text-align: center"><span style="display: block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase">Day 2 · Sep 2026 · 22 min</span><span style="display: block; margin-top: 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; line-height: 1.25">Café, Design, Michelin Smørrebrød, Canal Cruise, Tivoli &amp; Nyhavn</span></div><div class="rs-cap" style="text-align: center"><span style="display: block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase">Day 1 · Sep 2026 · 6 min</span><span style="display: block; margin-top: 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; line-height: 1.25">Museum, Coffee, a New Hotel, Noma Projects Shop &amp; Ny Carlsberg</span></div></div>
+    </div>
+  </section></div>
+
+  <section id="diary" aria-labelledby="diary-h" style="height: 700px; box-sizing: border-box; padding: 64px 64px; display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: center">
+    <div>
+      <p style="margin: 0; font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase">Travel Diary · PDF</p>
+      <h2 id="diary-h" style="margin: 18px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.1; white-space: nowrap">Copenhagen, Through My Eyes</h2>
+      <p style="margin: 8px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 24px">A Design Lover’s Travel Diary</p>
+      <p style="margin: 22px 0 0; font-size: 15px; line-height: 1.8">In July 2026, I came back to Copenhagen after twenty years. This diary collects the places I actually visited over four days — museums and design shops, bakeries and smørrebrød, and the small moments that made the trip.</p>
+      <ul style="margin: 20px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px"><li style="display: flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.6"><span aria-hidden="true" style="flex: none; width: 6px; height: 6px; border-radius: 999px; background: #a48a72"></span>A PDF for your phone or tablet</li><li style="display: flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.6"><span aria-hidden="true" style="flex: none; width: 6px; height: 6px; border-radius: 999px; background: #a48a72"></span>Map, website &amp; film links on every page</li><li style="display: flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.6"><span aria-hidden="true" style="flex: none; width: 6px; height: 6px; border-radius: 999px; background: #a48a72"></span>Journal pages for your own trip</li></ul>
+      <div style="display: flex; align-items: center; gap: 14px; margin-top: 32px">
+        <a href="#buy-diary" class="rs-ihb" style="align-items: center; height: 48px; padding: 0 26px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none"><span class="ihb-fill" aria-hidden="true"></span><span class="ihb-a"><span class="ihb-dot" aria-hidden="true"></span>Get Travel Diary</span><span class="ihb-b" aria-hidden="true">Get Travel Diary<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+        <span style="display: inline-flex; align-items: center; height: 48px; padding: 0 26px; border-radius: 999px; background: var(--Blush, #e8d8d5); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase">Coming soon</span>
+      </div>
+    </div>
+    <div class="rs-bookwrap" data-w="672" data-h="440" aria-roledescription="carousel" aria-label="Travel diary pages"><div class="bk-scene" style="height:480px"></div><div class="bk-ctrl" style="margin-top:14px"><button type="button" class="bk-prev" aria-label="Previous spread">←</button><span class="bk-meta"><span class="bk-label">Cover</span><span class="bk-num">01 / 04</span></span><button type="button" class="bk-next" aria-label="Next spread">→</button></div></div>
+  </section>
+
+  <!-- welcome -->
+  
+
+  <!-- gallery -->
+  <section aria-labelledby="gal-h" style="height: 920px; box-sizing: border-box; padding: 96px 64px">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px">
+      <div>
+        <p style="margin: 0; font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase">Gallery · July 2026</p>
+        <h2 id="gal-h" style="margin: 16px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 56px; line-height: 1">A summer in Copenhagen</h2>
+        <p style="margin: 18px 0 0; max-width: 560px; font-size: 15px; line-height: 1.8">Colourful harbours, beautiful chairs, quiet cafés and long summer light.</p>
+      </div>
+      <a href="journal.html" style="display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(90,74,58,0.3); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Open the journal <span aria-hidden="true">→</span></a>
+    </div>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; align-items: end">
+      <a href="journal.html" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none">
+        <span class="rs-gtile"><img src="images/nyhavn.jpg" alt="Colourful houses along Nyhavn, reflected in the canal" style="width: 100%; height: 360px; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a"><span class="rs-gnote" aria-hidden="true"><i>Golden hour by the canal</i><small>View story →</small></span></span>
+        <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-align: center">Nyhavn</span>
+      </a>
+      <a href="journal.html" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none">
+        <span class="rs-gtile"><img src="images/lille-bakery.jpg" alt="The bakery seen from above, with bakers at work and long wooden tables" style="width: 100%; height: 360px; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a"><span class="rs-gnote" aria-hidden="true"><i>Warm bread, slow mornings</i><small>View story →</small></span></span>
+        <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-align: center">Lille Bakery</span>
+      </a>
+      <a href="journal.html" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none">
+        <span class="rs-gtile"><img src="images/bellevue-beach.jpg" alt="Arne Jacobsen’s striped lifeguard tower by a calm blue sea" style="width: 100%; height: 360px; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a"><span class="rs-gnote" aria-hidden="true"><i>Sea breeze at Bellevue</i><small>View story →</small></span></span>
+        <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-align: center">Bellevue Beach</span>
+      </a>
+      <a href="journal.html" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none">
+        <span class="rs-gtile"><img src="images/norrlyst-lunch.jpg" alt="Open-faced shrimp sandwich with flowers and a glass of white wine" style="width: 100%; height: 360px; object-fit: cover; object-position: 0% 50%; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a"><span class="rs-gnote" aria-hidden="true"><i>Smørrebrød in the sunshine</i><small>View story →</small></span></span>
+        <span style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-align: center">Lunch at Norrlyst</span>
+      </a>
+    </div>
+    <div style="margin-top: 40px; text-align: center"><a href="journal.html" style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-underline-offset: 6px">See all 16 photos of Copenhagen →</a></div>
+  </section>
+
+  <!-- little joys -->
+  <section aria-labelledby="joy-h" style="height: 640px; box-sizing: border-box; padding: 96px 0; background-color: #f5f1e8; background-image: repeating-linear-gradient(90deg, rgba(232,216,213,0.85) 0px, rgba(232,216,213,0.85) 28px, rgba(232,216,213,0) 28px, rgba(232,216,213,0) 56px); display: flex; justify-content: center">
+    <div style="width: 1120px; box-sizing: border-box; padding: 56px 64px; border-radius: 12px; background: var(--Buttermilk, #f5f1e8); box-shadow: 0 8px 24px #5a4a3a1a; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center">
+      <div>
+        <p style="margin: 0; font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase">Little Joys</p>
+        <h2 id="joy-h" style="margin: 16px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 44px; line-height: 1.05; white-space: nowrap">How are you feeling today?</h2>
+        <p style="margin: 18px 0 0; font-size: 15px; line-height: 1.8">Choose a mood and receive a photograph and a few gentle words, chosen just for this moment.</p>
+        <a href="little-joys.html" class="rs-ihb" style="display: flex; width: fit-content; margin: 28px auto 0; align-items: center; height: 48px; padding: 0 26px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none"><span class="ihb-fill" aria-hidden="true"></span><span class="ihb-a"><span class="ihb-dot" aria-hidden="true"></span>Find a little joy</span><span class="ihb-b" aria-hidden="true">Find a little joy<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+        <a href="little-joys.html?mood=calm" style="display: block; padding: 22px 24px; border-radius: 12px; border: 1px solid rgba(90,74,58,0.18); text-decoration: none"><span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 24px; color: #a48a72">01</span><span style="display: block; margin-top: 6px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 27px">A Little Calm</span><span style="display: block; margin-top: 4px; font-size: 13px">For a quieter heart</span></a>
+        <a href="little-joys.html?mood=escape" style="display: block; padding: 22px 24px; border-radius: 12px; border: 1px solid rgba(90,74,58,0.18); text-decoration: none"><span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 24px; color: #a48a72">02</span><span style="display: block; margin-top: 6px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 27px">A Little Escape</span><span style="display: block; margin-top: 4px; font-size: 13px">When you long to travel</span></a>
+        <a href="little-joys.html?mood=beauty" style="display: block; padding: 22px 24px; border-radius: 12px; border: 1px solid rgba(90,74,58,0.18); text-decoration: none"><span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 24px; color: #a48a72">03</span><span style="display: block; margin-top: 6px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 27px">A Little Beauty</span><span style="display: block; margin-top: 4px; font-size: 13px">To see something beautiful</span></a>
+        <a href="little-joys.html" style="display: block; padding: 22px 24px; border-radius: 12px; border: 1px solid rgba(90,74,58,0.18); text-decoration: none"><span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 24px; color: #a48a72">04</span><span style="display: block; margin-top: 6px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 27px">A Little Joy</span><span style="display: block; margin-top: 4px; font-size: 13px">For a spark of happiness</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- letters -->
+  <section aria-labelledby="let-h" style="height: 640px; box-sizing: border-box; padding: 96px 64px 96px 160px; display: grid; grid-template-columns: 5fr 6fr; gap: 88px; align-items: center">
+    <div style="position: relative; height: 440px">
+      <img src="images/norrlyst-lunch.jpg" alt="Open-faced shrimp sandwich with flowers and a glass of white wine" style="position: absolute; left: 0; top: 0; width: 100%; height: 440px; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a">
+      
+    </div>
+    <div>
+      <p style="margin: 0; font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase">Letters from R</p>
+      <h2 id="let-h" style="margin: 16px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 42px; line-height: 1.05; white-space: nowrap">Slow letters on travel &amp; design</h2>
+      <p style="margin: 20px 0 0; max-width: 480px; font-size: 15px; line-height: 1.8">Longer stories, favourite places and design notes, delivered by Substack — a quiet corner to read with a cup of coffee.</p>
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 32px">
+        <a href="letters.html" style="display: inline-flex; align-items: center; height: 48px; padding: 0 26px; border-radius: 999px; background: var(--WarmBrown, #5a4a3a); color: var(--Buttermilk, #f5f1e8); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Read the letters</a>
+        <span style="display: inline-flex; align-items: center; height: 48px; padding: 0 26px; border-radius: 999px; background: var(--Blush, #e8d8d5); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase">Subscribe · Coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="shop-h" style="height: 880px; box-sizing: border-box; padding: 88px 64px; text-align: center"><p style="margin: 0; font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase">Art · The Little Shop</p><h2 id="shop-h" style="margin: 16px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 48px">Art inspired by travel</h2><p style="margin: 18px auto 0; font-size: 15px; line-height: 1.8; white-space: nowrap">Wall art, prints and clip art drawn from the places I love — so a little of the journey can live on your walls, too.</p><p style="margin: 10px 0 0; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #a48a72">Coming soon</p><div style="margin-top: 48px; display: flex; justify-content: center; align-items: flex-end; gap: 56px"><figure style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none"><div style="padding: 16px; background: #fbf9f4; border: 7px solid #e2d3bf; box-shadow: 0 8px 24px #5a4a3a1a"><img src="images/art-bakery.jpg" alt="Illustration of a Parisian bakery with a striped awning and pink peonies" style="display: block; width: 340px; height: auto"></div><figcaption style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">Paris bakery · <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 15px; letter-spacing: 0.02em; text-transform: none">Wall art</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none"><div style="padding: 16px; background: #fbf9f4; border: 7px solid #e2d3bf; box-shadow: 0 8px 24px #5a4a3a1a"><img src="images/art-party.jpg" alt="Illustration of six women in polka-dot skirts dancing around a strawberry cake" style="display: block; width: 230px; height: auto"></div><figcaption style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">Little celebration · <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 15px; letter-spacing: 0.02em; text-transform: none">Print</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none"><div style="padding: 16px; background: #fbf9f4; border: 7px solid #e2d3bf; box-shadow: 0 8px 24px #5a4a3a1a"><img src="images/art-walk.jpg" alt="Illustration of a woman in a striped top walking her white bichon frisé past the colourful houses of Nyhavn" style="display: block; width: 340px; height: auto"></div><figcaption style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">Nyhavn stroll · <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 15px; letter-spacing: 0.02em; text-transform: none">Clip art</span></figcaption></figure></div><div style="display: flex; justify-content: center; gap: 14px; margin-top: 44px"><a href="https://jp.pinterest.com/rstorytravel/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 48px; padding: 0 26px; border-radius: 999px; background: var(--Blush, #e8d8d5); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; gap: 10px; text-decoration: none">See it on Pinterest <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/r_story_travel/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(90,74,58,0.35); box-sizing: border-box; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Peek on Instagram <span aria-hidden="true">↗</span></a></div></section>
+
+  <!-- follow -->
+  <section aria-labelledby="fol-h" style="height: 500px; box-sizing: border-box; padding: 80px 64px; text-align: center">
+    <p style="margin: 0; font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase">Follow the story</p>
+    <h2 id="fol-h" style="margin: 16px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 48px">Wherever you like to wander</h2>
+    <div style="margin: 56px auto 0; max-width: 1120px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px">
+      <a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none">
+        <span style="width: 64px; height: 64px; border-radius: 999px; border: 1px solid #a48a72; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5a4a3a" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z"></path></svg></span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px">YouTube</span><span style="font-size: 13px">Travel films ↗</span></a>
+      <a href="https://www.instagram.com/r_story_travel/" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none">
+        <span style="width: 64px; height: 64px; border-radius: 999px; border: 1px solid #a48a72; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5a4a3a" stroke-width="1.3" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.7" fill="#5a4a3a"></circle></svg></span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px">Instagram</span><span style="font-size: 13px">Daily photographs ↗</span></a>
+      <a href="https://jp.pinterest.com/rstorytravel/" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none">
+        <span style="width: 64px; height: 64px; border-radius: 999px; border: 1px solid #a48a72; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5a4a3a" stroke-width="1.3" aria-hidden="true"><rect x="4" y="4" width="7" height="9" rx="1"></rect><rect x="13" y="4" width="7" height="6" rx="1"></rect><rect x="4" y="15" width="7" height="5" rx="1"></rect><rect x="13" y="12" width="7" height="8" rx="1"></rect></svg></span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px">Pinterest</span><span style="font-size: 13px">Moodboards &amp; ideas ↗</span></a>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+        <span style="width: 64px; height: 64px; border-radius: 999px; border: 1px solid #a48a72; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5a4a3a" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="M4 7l8 6 8-6"></path></svg></span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px">Substack</span><span style="font-size: 13px">Letters &amp; long reads</span><span style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: var(--Blush, #e8d8d5)">Coming soon</span></div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer style="height: 440px; box-sizing: border-box; padding: 72px 64px 40px; background: #ebe4d8; display: flex; flex-direction: column; justify-content: space-between">
+    <div style="display: grid; grid-template-columns: auto auto auto 1fr; column-gap: 112px; align-items: start">
+      <div style="display: flex; align-items: center; gap: 24px">
+        <svg width="132" height="132" viewBox="0 0 132 132" aria-hidden="true"><defs><path id="rsStamp" d="M66,66 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"></path></defs><circle cx="66" cy="66" r="64" fill="none" stroke="#a48a72" stroke-width="1"></circle><text font-family="Arimo, sans-serif" font-size="10" letter-spacing="2.6" fill="#5a4a3a"><textPath href="#rsStamp">TRAVEL · DESIGN · LITTLE JOYS · R’S STORY ·</textPath></text><text x="66" y="76" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="30" fill="#5a4a3a">R</text></svg>
+        <div><p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px">R’s Story</p><p style="margin: 6px 0 0; font-size: 13px; line-height: 1.7; white-space: nowrap">Travel, Design &amp; Little Joys<br>A little inspiration for your own story.</p></div>
+      </div>
+      <nav aria-label="Explore" style="display: flex; flex-direction: column; gap: 12px; font-size: 13px"><span style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4px">Explore</span><a href="journal.html" style="text-decoration: none">Travel Journal</a><a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="text-decoration: none">Films</a><a href="little-joys.html" style="text-decoration: none">Little Joys</a><a href="letters.html" style="text-decoration: none">Letters</a><a href="#about" style="text-decoration: none">About</a></nav>
+      <nav aria-label="Follow" style="display: flex; flex-direction: column; gap: 12px; font-size: 13px"><span style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4px">Follow</span><a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="text-decoration: none">YouTube ↗</a><a href="https://www.instagram.com/r_story_travel/" target="_blank" rel="noopener" style="text-decoration: none">Instagram ↗</a><a href="https://jp.pinterest.com/rstorytravel/" target="_blank" rel="noopener" style="text-decoration: none">Pinterest ↗</a><span>Substack · soon</span></nav>
+      <div style="display: flex; flex-direction: column; align-items: flex-end; text-align: right">
+        <div class="rs-bob" style="width: 150px"><img src="images/dog.png" alt="" style="width: 150px; height: auto; display: block"></div>
+        <p style="margin: 14px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 28px">Until the next little adventure…</p>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(90,74,58,0.18); font-size: 12px; letter-spacing: 0.08em"><span>© 2026 R’s Story</span><a href="./" style="text-decoration: none">Back to top ↑</a></div>
+  </footer>
+</div></div></div>
+<div class="frame sp" data-w="390" data-h="7138" hidden><div class="stage sp"><div style="width: 390px; position: relative; overflow: hidden; background: var(--Buttermilk, #f5f1e8); color: var(--WarmBrown, #5a4a3a); font-family: Arimo, Helvetica, sans-serif">
+
+  <a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 16px; background: var(--Blush, #e8d8d5); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">New film · Copenhagen Travel Diary <span aria-hidden="true">→</span></a>
+
+  <header class="rs-blur rs-h" style="height: 72px; box-sizing: border-box; padding: 0 16px 0 24px; display: flex; align-items: center; justify-content: space-between">
+    <a href="./" style="font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 26px; text-decoration: none">R’s Story</a>
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.12em">
+      <span><a href="./" style="text-decoration: none; border-bottom: 1px solid #5a4a3a">EN</a> <span style="color: #a48a72">/</span> <a href="#ja" style="text-decoration: none">日本語</a></span>
+      <a href="#menu" aria-label="Menu" style="display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 6px; width: 44px; height: 44px; text-decoration: none"><span style="display: block; width: 24px; height: 1px; background: #5a4a3a"></span><span style="display: block; width: 16px; height: 1px; background: #5a4a3a"></span></a>
+    </div>
+  </header>
+
+  <div class="hv"><section aria-label="Welcome to R's Story" style="height: 460px; box-sizing: border-box; padding: 0 16px; position: relative">
+    <div style="position: relative; height: 420px">
+      <div class="rs-mask rs-reveal" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; border-radius: 2px; overflow: hidden; background: var(--Blush, #e8d8d5); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 22px">
+        <img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 133px; top: 348px; width: 16px; height: 16px; animation-duration: 3.1s; animation-delay: -1.0s"><img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 290px; top: 63px; width: 15px; height: 15px; animation-duration: 3.6s; animation-delay: -3.7s"><img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 50px; top: 71px; width: 13px; height: 13px; animation-duration: 3.3s; animation-delay: -3.5s"><img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 290px; top: 255px; width: 12px; height: 12px; animation-duration: 3.8s; animation-delay: -1.3s"><img class="rs-twinkle" src="images/star1.png" alt="" style="position: absolute; left: 45px; top: 248px; width: 17px; height: 17px; animation-duration: 3.8s; animation-delay: -3.0s"><div style="margin-bottom: 28px; align-self: stretch; text-align: center">
+          <p style="margin: 0; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase">An online travel magazine</p>
+          <div style="margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; column-gap: 10px; row-gap: 2px">
+            <h1 style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: 36px; line-height: 1; letter-spacing: 0.02em">R’s Story</h1>
+            <p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 21px; line-height: 1.2">Travel, Design &amp; Little Joys</p>
           </div>
-          <a class="link-arrow" href="little-joys.html" data-reveal data-i18n="home.joys.cta">Find a little joy</a>
-        </div>
-        <ul class="mood-links" data-reveal-group>
-          <li data-reveal><a href="little-joys.html?mood=calm"><span class="mood-links__num">01</span><span class="mood-links__name">A Little Calm</span><span class="mood-links__desc" data-i18n="mood.calm.desc">For a quieter heart</span></a></li>
-          <li data-reveal><a href="little-joys.html?mood=escape"><span class="mood-links__num">02</span><span class="mood-links__name">A Little Escape</span><span class="mood-links__desc" data-i18n="mood.escape.desc">When you long to travel</span></a></li>
-          <li data-reveal><a href="little-joys.html?mood=beauty"><span class="mood-links__num">03</span><span class="mood-links__name">A Little Beauty</span><span class="mood-links__desc" data-i18n="mood.beauty.desc">To see something beautiful</span></a></li>
-          <li data-reveal><a href="little-joys.html?mood=joy"><span class="mood-links__num">04</span><span class="mood-links__name">A Little Joy</span><span class="mood-links__desc" data-i18n="mood.joy.desc">For a spark of happiness</span></a></li>
-        </ul>
+        </div><div style="width: 300px; display: flex; justify-content: space-between; align-items: center"><div class="rs-drift" style="flex: none; animation-delay: -0.0s"><img src="images/stamp-cupcakes.png" alt="Stamp-framed photo of little cakes in a café" style="display: block; height: 44px; width: 44px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -0.9s"><img src="images/stamp-interior.png" alt="Stamp-framed photo of a bright Danish living room" style="display: block; height: 44px; width: 34px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -1.8s"><img src="images/stamp-courtyard.png" alt="Stamp-framed photo of a leafy courtyard café" style="display: block; height: 44px; width: 44px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -2.7s"><img src="images/stamp-shopfront.png" alt="Stamp-framed photo of a Copenhagen shopfront" style="display: block; height: 44px; width: 57px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -3.6s"><img src="images/stamp-flowers.png" alt="Stamp with a small illustrated bouquet" style="display: block; height: 37px; width: 38px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div><div class="rs-drift" style="flex: none; animation-delay: -4.5s"><img src="images/stamp-arcade.png" alt="Stamp-framed photo of an elegant Paris arcade" style="display: block; height: 44px; width: 34px; filter: drop-shadow(0 6px 14px rgba(90,74,58,0.12))"></div></div><p style="margin: 22px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 19px">Bringing beautiful moments home to you</p>
       </div>
-    </section>
+    </div>
+  </section></div>
 
-    <!-- ===== Substack（Letters from R）の紹介 ===== -->
-    <section class="section" aria-labelledby="home-letters-title">
-      <div class="container letters-teaser" data-reveal-group>
-        <p class="letters-teaser__quote" data-reveal aria-hidden="true">Letters<br>from R</p>
-        <div>
-          <p class="eyebrow" data-reveal data-i18n="home.letters.eyebrow">Letters from R</p>
-          <h2 id="home-letters-title" class="title-lg" data-reveal data-i18n="home.letters.title">Slow letters on travel &amp; design</h2>
-          <p data-reveal data-i18n="home.letters.text" style="color: var(--color-text-soft); margin-top: 1rem;">Longer stories, favourite places and design notes, delivered by Substack — a quiet corner to read with a cup of coffee.</p>
-          <div class="letters-teaser__actions" data-reveal id="home-letters-actions">
-            <a class="btn" href="letters.html" data-i18n="home.letters.cta">Read the letters</a>
-          </div>
-        </div>
+  <section aria-labelledby="welcome-h" style="height: 660px; box-sizing: border-box; padding: 40px 20px; display: flex; justify-content: center; align-items: center">
+    <div style="display: flex; flex-direction: column; align-items: center"><h2 id="welcome-h" style="margin: 0 0 22px; text-align: center; font-size: 13px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase">Welcome</h2><div class="rs-stroll">
+    <article style="width: 350px; box-sizing: border-box; padding: 14px; background: #fbf9f4; border-radius: 4px; box-shadow: 0 10px 30px rgba(90,74,58,0.14)">
+      <img src="images/welcome-walk.jpg" alt="Illustration of a woman in a striped top walking her white bichon frisé past the colourful houses of Nyhavn" style="display: block; width: 322px; height: auto; border-radius: 2px">
+      <div style="position: relative; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(90,74,58,0.18)">
+        <div style="position: absolute; right: 0; top: 14px"><img src="images/stamp-shopfront.png" alt="Stamp-framed photo of a Copenhagen shopfront" style="filter: drop-shadow(0 1px 1px rgba(90,74,58,0.38)) drop-shadow(0 3px 7px rgba(90,74,58,0.18)); display: block; width: 74px; height: auto; transform: rotate(3deg)"></div>
+        <div style="position: absolute; right: 40px; top: 42px; transform: rotate(-8deg); z-index: 3; pointer-events: none"><svg aria-hidden="true" width="97" height="46" viewBox="0 0 210 100" style="display: block">
+<defs><path id="pmArcsp" d="M50,50 m-34,0 a34,34 0 1,1 68,0 a34,34 0 1,1 -68,0"></path></defs>
+<g fill="none" stroke="#5a4a3a" stroke-opacity="0.55" stroke-width="1.6"><circle cx="50" cy="50" r="44"></circle><circle cx="50" cy="50" r="27"></circle>
+<path d="M98 30 q14 -7 28 0 t28 0 t28 0 t28 0"></path><path d="M98 44 q14 -7 28 0 t28 0 t28 0 t28 0"></path><path d="M98 58 q14 -7 28 0 t28 0 t28 0 t28 0"></path><path d="M98 72 q14 -7 28 0 t28 0 t28 0 t28 0"></path></g>
+<text font-family="Arimo, sans-serif" font-size="9.5" letter-spacing="2.4" fill="#5a4a3a" fill-opacity="0.6"><textPath href="#pmArcsp">COPENHAGEN · DENMARK ·</textPath></text>
+<text x="50" y="47" text-anchor="middle" font-family="Arimo, sans-serif" font-size="9" letter-spacing="1" fill="#5a4a3a" fill-opacity="0.6">12 JUL</text>
+<text x="50" y="59" text-anchor="middle" font-family="Arimo, sans-serif" font-size="9" letter-spacing="1" fill="#5a4a3a" fill-opacity="0.6">2026</text></svg></div>
+        <p style="margin: 84px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45">Beautiful streets, quiet cafés, thoughtful design and the small discoveries of everyday life — collected slowly, so you might feel like enjoying your own story a little more.</p>
+        <p style="margin: 8px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 19px; text-align: right">— with love, R</p>
       </div>
-    </section>
+    </article>
+    </div></div>
+  </section>
 
-    <!-- ===== SNSリンク（URLは config.js で設定） ===== -->
-    <section class="section section--tight section--stone" aria-labelledby="home-follow-title">
-      <div class="container">
-        <div class="section-head" data-reveal-group>
-          <div class="section-head__text">
-            <p class="eyebrow" data-reveal data-i18n="home.follow.eyebrow">Follow the story</p>
-            <h2 id="home-follow-title" class="title-lg" data-reveal data-i18n="home.follow.title">Wherever you like to wander</h2>
-          </div>
-        </div>
-        <div id="home-follow" data-reveal></div>
+  <div class="fv" data-f="frame"><section id="film" aria-labelledby="film-h" style="height: 660px; box-sizing: border-box; padding: 56px 24px">
+    <p style="margin: 0; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase">Films</p>
+    <h2 id="film-h" style="margin: 12px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1; white-space: nowrap">I fell in love with Copenhagen</h2>
+    <div class="rs-carwrap" style="margin-top: 24px"><div class="rs-car" style="position: relative; width: 338px; height: 190px; box-sizing: content-box; border: 2px solid #6b5847; border-radius: 6px; overflow: hidden; box-shadow: 0 14px 30px rgba(90,74,58,0.2)">
+        <div class="rs-track" style="display: flex; height: 100%"><a href="https://www.youtube.com/watch?v=UkC7dm9h0-M" style="flex: none; width: 100%; height: 100%; position: relative; display: block"><img src="images/film-day4.jpg" alt="Thumbnail of the Copenhagen travel film, Day 4" draggable="false" style="display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none"><span class="rs-play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 999px; background: rgba(245,241,232,0.92); display: flex; align-items: center; justify-content: center; transition: opacity .5s"><svg width="14" height="14" viewBox="0 0 24 24" fill="#5a4a3a"><path d="M8 5.5v13l10-6.5z"></path></svg></span></a><a href="https://www.youtube.com/watch?v=tMUZtCO81IM" style="flex: none; width: 100%; height: 100%; position: relative; display: block"><img src="images/film-day3.jpg" alt="Thumbnail of the Copenhagen travel film, Day 3" draggable="false" style="display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none"><span class="rs-play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 999px; background: rgba(245,241,232,0.92); display: flex; align-items: center; justify-content: center; transition: opacity .5s"><svg width="14" height="14" viewBox="0 0 24 24" fill="#5a4a3a"><path d="M8 5.5v13l10-6.5z"></path></svg></span></a><a href="https://www.youtube.com/watch?v=ZhzrqosA1ms" style="flex: none; width: 100%; height: 100%; position: relative; display: block"><img src="images/film-thumb.jpg" alt="Thumbnail of the Copenhagen travel film, Day 2" draggable="false" style="display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none"><span class="rs-play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 999px; background: rgba(245,241,232,0.92); display: flex; align-items: center; justify-content: center; transition: opacity .5s"><svg width="14" height="14" viewBox="0 0 24 24" fill="#5a4a3a"><path d="M8 5.5v13l10-6.5z"></path></svg></span></a><a href="https://www.youtube.com/watch?v=jUdUummmonA" style="flex: none; width: 100%; height: 100%; position: relative; display: block"><img src="images/film-day1.jpg" alt="Thumbnail of the Copenhagen travel film, Day 1" draggable="false" style="display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; pointer-events: none"><span class="rs-play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 999px; background: rgba(245,241,232,0.92); display: flex; align-items: center; justify-content: center; transition: opacity .5s"><svg width="14" height="14" viewBox="0 0 24 24" fill="#5a4a3a"><path d="M8 5.5v13l10-6.5z"></path></svg></span></a></div>
       </div>
-    </section>
+      <div style="margin-top: 16px; display: flex; justify-content: flex-end; gap: 10px"><button type="button" class="rs-car-arrow" data-car="prev" aria-label="Previous film" disabled style="width: 44px; height: 44px; flex: none; "><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 19l-7-7 7-7"></path></svg></button><button type="button" class="rs-car-arrow" data-car="next" aria-label="Next film" style="width: 44px; height: 44px; flex: none; "><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button></div>
+    </div>
+    <div style="margin-top: 12px; min-height: 84px"><div class="rs-cap is-active" style="text-align: left"><span style="display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase">Day 4 · Nov 2026 · 19 min</span><span style="display: block; margin-top: 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; line-height: 1.25">Why I fell in love with Copenhagen — Bakeries, Michelin &amp; Design</span></div><div class="rs-cap" style="text-align: left"><span style="display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase">Day 3 · Oct 2026 · 17 min</span><span style="display: block; margin-top: 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; line-height: 1.25">A Design Lover’s Day — Arne Jacobsen, Finn Juhl, Louisiana &amp; Cafés</span></div><div class="rs-cap" style="text-align: left"><span style="display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase">Day 2 · Sep 2026 · 22 min</span><span style="display: block; margin-top: 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; line-height: 1.25">Café, Design, Michelin Smørrebrød, Canal Cruise, Tivoli &amp; Nyhavn</span></div><div class="rs-cap" style="text-align: left"><span style="display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase">Day 1 · Sep 2026 · 6 min</span><span style="display: block; margin-top: 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; line-height: 1.25">Museum, Coffee, a New Hotel, Noma Projects Shop &amp; Ny Carlsberg</span></div></div>
+    <a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" class="rs-ihb" style="margin-top: 16px; align-items: center; height: 44px; padding: 0 22px; box-sizing: border-box; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none"><span class="ihb-fill" aria-hidden="true"></span><span class="ihb-a"><span class="ihb-dot" aria-hidden="true"></span>See all films</span><span class="ihb-b" aria-hidden="true">See all films<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </section></div>
 
-  </main>
+  <section id="diary" aria-labelledby="diary-h" style="height: 880px; box-sizing: border-box; padding: 48px 24px">
+    <div class="rs-bookwrap" data-w="342" data-h="224" aria-roledescription="carousel" aria-label="Travel diary pages"><div class="bk-scene" style="height:250px"></div><div class="bk-ctrl" style="margin-top:14px"><button type="button" class="bk-prev" aria-label="Previous spread">←</button><span class="bk-meta"><span class="bk-label">Cover</span><span class="bk-num">01 / 04</span></span><button type="button" class="bk-next" aria-label="Next spread">→</button></div></div>
+    <p style="margin: 28px 0 0; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase">Travel Diary · PDF</p>
+    <h2 id="diary-h" style="margin: 12px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 27px; line-height: 1.1; white-space: nowrap">Copenhagen, Through My Eyes</h2>
+    <p style="margin: 6px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 19px">A Design Lover’s Travel Diary</p>
+    <p style="margin: 16px 0 0; font-size: 14px; line-height: 1.75">In July 2026, I came back to Copenhagen after twenty years. This diary collects the places I actually visited over four days — museums and design shops, bakeries and smørrebrød, and the small moments that made the trip.</p>
+    <ul style="margin: 16px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px"><li style="display: flex; align-items: center; gap: 12px; font-size: 13px; line-height: 1.6"><span aria-hidden="true" style="flex: none; width: 6px; height: 6px; border-radius: 999px; background: #a48a72"></span>A PDF for your phone or tablet</li><li style="display: flex; align-items: center; gap: 12px; font-size: 13px; line-height: 1.6"><span aria-hidden="true" style="flex: none; width: 6px; height: 6px; border-radius: 999px; background: #a48a72"></span>Map, website &amp; film links on every page</li><li style="display: flex; align-items: center; gap: 12px; font-size: 13px; line-height: 1.6"><span aria-hidden="true" style="flex: none; width: 6px; height: 6px; border-radius: 999px; background: #a48a72"></span>Journal pages for your own trip</li></ul>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 24px">
+      <a href="#buy-diary" class="rs-ihb" style="align-items: center; height: 44px; padding: 0 22px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none"><span class="ihb-fill" aria-hidden="true"></span><span class="ihb-a"><span class="ihb-dot" aria-hidden="true"></span>Get Travel Diary</span><span class="ihb-b" aria-hidden="true">Get Travel Diary<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+      <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 999px; background: var(--Blush, #e8d8d5); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase">Coming soon</span>
+    </div>
+  </section>
 
-  <footer class="site-footer" data-site-footer></footer>
+  
 
-  <script src="assets/js/config.js" defer></script>
-  <script src="assets/js/i18n.js" defer></script>
-  <script src="assets/js/data/journal.js" defer></script>
-  <script src="assets/js/data/films.js" defer></script>
-  <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/gallery.js" defer></script>
-  <script src="assets/js/home.js" defer></script>
+  <section aria-labelledby="gal-h" style="height: 990px; box-sizing: border-box; padding: 56px 24px">
+    <p style="margin: 0; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase">Gallery · July 2026</p>
+    <h2 id="gal-h" style="margin: 12px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.05">A summer in Copenhagen</h2>
+    <p style="margin: 14px 0 0; font-size: 14px; line-height: 1.75">Colourful harbours, beautiful chairs, quiet cafés and long summer light.</p>
+    <a href="journal.html" style="margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 22px; border-radius: 999px; border: 1px solid rgba(90,74,58,0.3); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Open the journal <span aria-hidden="true">→</span></a>
+    <div style="margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; align-items: end">
+      <a href="journal.html" style="display: flex; flex-direction: column; gap: 12px; text-decoration: none"><span class="rs-gtile"><img src="images/nyhavn.jpg" alt="Colourful houses along Nyhavn, reflected in the canal" style="width: 100%; height: 220px; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a"><span class="rs-gnote" aria-hidden="true"><i>Golden hour by the canal</i><small>View story →</small></span></span><span style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; text-align: center">Nyhavn</span></a>
+      <a href="journal.html" style="display: flex; flex-direction: column; gap: 12px; text-decoration: none"><span class="rs-gtile"><img src="images/lille-bakery.jpg" alt="The bakery seen from above, with bakers at work and long wooden tables" style="width: 100%; height: 220px; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a"><span class="rs-gnote" aria-hidden="true"><i>Warm bread, slow mornings</i><small>View story →</small></span></span><span style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; text-align: center">Lille Bakery</span></a>
+      <a href="journal.html" style="display: flex; flex-direction: column; gap: 12px; text-decoration: none"><span class="rs-gtile"><img src="images/bellevue-beach.jpg" alt="Arne Jacobsen’s striped lifeguard tower by a calm blue sea" style="width: 100%; height: 220px; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a"><span class="rs-gnote" aria-hidden="true"><i>Sea breeze at Bellevue</i><small>View story →</small></span></span><span style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; text-align: center">Bellevue Beach</span></a>
+      <a href="journal.html" style="display: flex; flex-direction: column; gap: 12px; text-decoration: none"><span class="rs-gtile"><img src="images/norrlyst-lunch.jpg" alt="Open-faced shrimp sandwich with flowers and a glass of white wine" style="width: 100%; height: 220px; object-fit: cover; object-position: 8% 50%; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a"><span class="rs-gnote" aria-hidden="true"><i>Smørrebrød in the sunshine</i><small>View story →</small></span></span><span style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; text-align: center">Lunch at Norrlyst</span></a>
+    </div>
+    <div style="margin-top: 28px; text-align: center"><a href="journal.html" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; text-underline-offset: 6px">See all 16 photos →</a></div>
+  </section>
+
+  <section aria-labelledby="joy-h" style="height: 880px; box-sizing: border-box; padding: 48px 16px; background-color: #f5f1e8; background-image: repeating-linear-gradient(90deg, rgba(232,216,213,0.85) 0px, rgba(232,216,213,0.85) 20px, rgba(232,216,213,0) 20px, rgba(232,216,213,0) 40px)">
+    <div style="box-sizing: border-box; padding: 32px 24px; border-radius: 12px; background: var(--Buttermilk, #f5f1e8); box-shadow: 0 8px 24px #5a4a3a1a">
+      <p style="margin: 0; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase">Little Joys</p>
+      <h2 id="joy-h" style="margin: 12px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 25px; line-height: 1.1; white-space: nowrap">How are you feeling today?</h2>
+      <p style="margin: 14px 0 0; font-size: 14px; line-height: 1.75">Choose a mood and receive a photograph and a few gentle words, chosen just for this moment.</p>
+      <a href="little-joys.html" class="rs-ihb" style="display: flex; width: fit-content; margin: 20px auto 0; align-items: center; height: 44px; padding: 0 22px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none"><span class="ihb-fill" aria-hidden="true"></span><span class="ihb-a"><span class="ihb-dot" aria-hidden="true"></span>Find a little joy</span><span class="ihb-b" aria-hidden="true">Find a little joy<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 12px">
+        <a href="little-joys.html?mood=calm" style="display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 12px; border: 1px solid rgba(90,74,58,0.18); text-decoration: none"><span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 22px; color: #a48a72">01</span><span><span style="display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 23px">A Little Calm</span><span style="display: block; margin-top: 2px; font-size: 12px">For a quieter heart</span></span></a>
+        <a href="little-joys.html?mood=escape" style="display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 12px; border: 1px solid rgba(90,74,58,0.18); text-decoration: none"><span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 22px; color: #a48a72">02</span><span><span style="display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 23px">A Little Escape</span><span style="display: block; margin-top: 2px; font-size: 12px">When you long to travel</span></span></a>
+        <a href="little-joys.html?mood=beauty" style="display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 12px; border: 1px solid rgba(90,74,58,0.18); text-decoration: none"><span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 22px; color: #a48a72">03</span><span><span style="display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 23px">A Little Beauty</span><span style="display: block; margin-top: 2px; font-size: 12px">To see something beautiful</span></span></a>
+        <a href="little-joys.html" style="display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 12px; border: 1px solid rgba(90,74,58,0.18); text-decoration: none"><span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 22px; color: #a48a72">04</span><span><span style="display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 23px">A Little Joy</span><span style="display: block; margin-top: 2px; font-size: 12px">For a spark of happiness</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="let-h" style="height: 770px; box-sizing: border-box; padding: 56px 24px">
+    <div style="position: relative; height: 260px">
+      <img src="images/norrlyst-lunch.jpg" alt="Open-faced shrimp sandwich with flowers and a glass of white wine" style="width: 100%; height: 260px; object-fit: cover; border-radius: 2px; box-shadow: 0 8px 24px #5a4a3a1a; display: block">
+      
+    </div>
+    <p style="margin: 36px 0 0; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase">Letters from R</p>
+    <h2 id="let-h" style="margin: 12px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 23px; line-height: 1.1; white-space: nowrap">Slow letters on travel &amp; design</h2>
+    <p style="margin: 14px 0 0; font-size: 14px; line-height: 1.75">Longer stories, favourite places and design notes, delivered by Substack — a quiet corner to read with a cup of coffee.</p>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px">
+      <a href="letters.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 999px; background: var(--WarmBrown, #5a4a3a); color: var(--Buttermilk, #f5f1e8); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Read the letters</a>
+      <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 999px; background: var(--Blush, #e8d8d5); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase">Subscribe · Coming soon</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="shop-h" style="height: 640px; box-sizing: border-box; padding: 56px 0"><div style="padding: 0 24px"><p style="margin: 0; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase">Art · The Little Shop</p><h2 id="shop-h" style="margin: 12px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.05">Art inspired by travel</h2><p style="margin: 14px 0 0; font-size: 14px; line-height: 1.75">Wall art, prints and clip art drawn from the places I love — so a little of the journey can live on your walls, too.</p><p style="margin: 8px 0 0; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #a48a72">Coming soon</p></div><div style="margin-top: 28px; padding: 0 24px 16px; display: flex; align-items: flex-end; gap: 24px; overflow-x: auto"><figure style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none"><div style="padding: 10px; background: #fbf9f4; border: 5px solid #e2d3bf; box-shadow: 0 8px 24px #5a4a3a1a"><img src="images/art-bakery.jpg" alt="Illustration of a Parisian bakery with a striped awning and pink peonies" style="display: block; width: 200px; height: auto"></div><figcaption style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">Paris bakery · <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 15px; letter-spacing: 0.02em; text-transform: none">Wall art</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none"><div style="padding: 10px; background: #fbf9f4; border: 5px solid #e2d3bf; box-shadow: 0 8px 24px #5a4a3a1a"><img src="images/art-party.jpg" alt="Illustration of six women in polka-dot skirts dancing around a strawberry cake" style="display: block; width: 140px; height: auto"></div><figcaption style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">Little celebration · <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 15px; letter-spacing: 0.02em; text-transform: none">Print</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px; flex: none"><div style="padding: 10px; background: #fbf9f4; border: 5px solid #e2d3bf; box-shadow: 0 8px 24px #5a4a3a1a"><img src="images/art-walk.jpg" alt="Illustration of a woman in a striped top walking her white bichon frisé past the colourful houses of Nyhavn" style="display: block; width: 200px; height: auto"></div><figcaption style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase">Nyhavn stroll · <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 15px; letter-spacing: 0.02em; text-transform: none">Clip art</span></figcaption></figure></div><div style="padding: 0 24px; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px"><a href="https://jp.pinterest.com/rstorytravel/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 999px; background: var(--Blush, #e8d8d5); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; gap: 10px; text-decoration: none">See it on Pinterest <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/r_story_travel/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 22px; border-radius: 999px; border: 1px solid rgba(90,74,58,0.35); box-sizing: border-box; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none">Peek on Instagram <span aria-hidden="true">↗</span></a></div></section>
+
+  <section aria-labelledby="fol-h" style="height: 590px; box-sizing: border-box; padding: 56px 24px">
+    <p style="margin: 0; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; text-align: center">Follow the story</p>
+    <h2 id="fol-h" style="margin: 12px 0 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.1; text-align: center">Wherever you like to wander</h2>
+    <div style="margin-top: 32px; display: flex; flex-direction: column">
+      <a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(90,74,58,0.15); text-decoration: none"><span style="flex: none; width: 48px; height: 48px; border-radius: 999px; border: 1px solid #a48a72; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5a4a3a" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z"></path></svg></span><span style="flex-grow: 1"><span style="display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px">YouTube</span><span style="display: block; font-size: 12px">Travel films</span></span><span aria-hidden="true">↗</span></a>
+      <a href="https://www.instagram.com/r_story_travel/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(90,74,58,0.15); text-decoration: none"><span style="flex: none; width: 48px; height: 48px; border-radius: 999px; border: 1px solid #a48a72; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5a4a3a" stroke-width="1.3" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.7" fill="#5a4a3a"></circle></svg></span><span style="flex-grow: 1"><span style="display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px">Instagram</span><span style="display: block; font-size: 12px">Daily photographs</span></span><span aria-hidden="true">↗</span></a>
+      <a href="https://jp.pinterest.com/rstorytravel/" target="_blank" rel="noopener" style="text-decoration: none; display: flex; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(90,74,58,0.15)"><span style="flex: none; width: 48px; height: 48px; border-radius: 999px; border: 1px solid #a48a72; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5a4a3a" stroke-width="1.3" aria-hidden="true"><rect x="4" y="4" width="7" height="9" rx="1"></rect><rect x="13" y="4" width="7" height="6" rx="1"></rect><rect x="4" y="15" width="7" height="5" rx="1"></rect><rect x="13" y="12" width="7" height="8" rx="1"></rect></svg></span><span style="flex-grow: 1"><span style="display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px">Pinterest</span><span style="display: block; font-size: 12px">Moodboards &amp; ideas</span></span><span aria-hidden="true" style="margin-left: auto; font-size: 14px">↗</span></a>
+      <div style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(90,74,58,0.15); border-bottom: 1px solid rgba(90,74,58,0.15)"><span style="flex: none; width: 48px; height: 48px; border-radius: 999px; border: 1px solid #a48a72; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5a4a3a" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="M4 7l8 6 8-6"></path></svg></span><span style="flex-grow: 1"><span style="display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px">Substack</span><span style="display: block; font-size: 12px">Letters &amp; long reads</span></span><span style="font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; background: var(--Blush, #e8d8d5)">Soon</span></div>
+    </div>
+  </section>
+
+  <footer style="height: 520px; box-sizing: border-box; padding: 48px 24px 28px; background: #ebe4d8; display: flex; flex-direction: column; justify-content: space-between">
+    <div style="display: flex; align-items: center; gap: 18px">
+      <svg width="104" height="104" viewBox="0 0 132 132" aria-hidden="true"><defs><path id="rsStampSp" d="M66,66 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"></path></defs><circle cx="66" cy="66" r="64" fill="none" stroke="#a48a72" stroke-width="1"></circle><text font-family="Arimo, sans-serif" font-size="10" letter-spacing="2.6" fill="#5a4a3a"><textPath href="#rsStampSp">TRAVEL · DESIGN · LITTLE JOYS · R’S STORY ·</textPath></text><text x="66" y="76" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="30" fill="#5a4a3a">R</text></svg>
+      <div><p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px">R’s Story</p><p style="margin: 4px 0 0; font-size: 12px; line-height: 1.6">Travel, Design &amp; Little Joys</p></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; font-size: 13px">
+      <nav aria-label="Explore" style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase">Explore</span><a href="journal.html" style="text-decoration: none">Travel Journal</a><a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="text-decoration: none">Films</a><a href="little-joys.html" style="text-decoration: none">Little Joys</a><a href="letters.html" style="text-decoration: none">Letters</a><a href="#about" style="text-decoration: none">About</a></nav>
+      <nav aria-label="Follow" style="display: flex; flex-direction: column; gap: 10px"><span style="font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase">Follow</span><a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener" style="text-decoration: none">YouTube ↗</a><a href="https://www.instagram.com/r_story_travel/" target="_blank" rel="noopener" style="text-decoration: none">Instagram ↗</a><a href="https://jp.pinterest.com/rstorytravel/" target="_blank" rel="noopener" style="text-decoration: none">Pinterest ↗</a><span>Substack · soon</span></nav>
+    </div>
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+      <p style="margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 22px; line-height: 1.2">Until the next<br>little adventure…</p>
+      <div class="rs-bob" style="width: 110px; flex: none"><img src="images/dog.png" alt="" style="width: 110px; height: auto; display: block"></div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid rgba(90,74,58,0.18); font-size: 11px"><span>© 2026 R’s Story</span><a href="./" style="text-decoration: none; min-height: 44px; display: flex; align-items: center">Back to top ↑</a></div>
+  </footer>
+</div></div></div>
+<script>
+(function(){
+  var view='pc', io;
+  function frame(){return document.querySelector('.frame.'+view);}
+  function pick(){
+    var v=document.documentElement.clientWidth>=820?'pc':'sp';
+    if(v!==view||!document.querySelector('.frame.'+v+':not([hidden])')){view=v;}
+    document.querySelectorAll('.frame').forEach(function(f){f.hidden=!f.classList.contains(view);});
+  }
+  function fit(){
+    pick();
+    var f=frame(), w=+f.dataset.w, cw=document.documentElement.clientWidth;
+    var avail=view==='pc'?Math.min(cw,w):Math.min(cw,520);
+    var sc=avail/w, h=f.querySelector('.stage').firstElementChild.offsetHeight;
+    f.style.width=avail+'px'; f.style.height=(h*sc)+'px';
+    f.querySelector('.stage').style.transform='scale('+sc+')';
+  }
+  function setupScroll(stage){
+    if(io) io.disconnect();
+    var secs=[].slice.call(stage.firstElementChild.children).filter(function(el){return (/SECTION|FOOTER/.test(el.tagName)||el.classList.contains('fv')) && !/Welcome to R/.test(el.getAttribute('aria-label')||'');});
+    if(!('IntersectionObserver' in window)) return;
+    io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
+    secs.forEach(function(el){el.classList.add('rs-sec');el.classList.remove('in');io.observe(el);});
+  }
+
+  /* tiny heart trail across the whole page */
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches, last=0;
+  var fine=window.matchMedia&&window.matchMedia('(pointer: fine)').matches;
+  var HG=[['#fbe3e8','#e3a6b8'],['#fff4ef','#e9b8c2'],['#f6dbe4','#d9a3b5']];
+  document.addEventListener('pointermove',function(e){
+    if(reduce||!fine||e.pointerType!=='mouse'||!document.body.animate) return;
+    
+    var now=performance.now(); if(now-last<130) return; last=now;
+    var z=(9+Math.random()*4).toFixed(1);
+    var p=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    p.setAttribute('viewBox','0 0 24 24');p.setAttribute('width',z);p.setAttribute('height',z);p.setAttribute('class','rs-heart');p.setAttribute('aria-hidden','true');
+    var gid='rh'+Math.random().toString(36).slice(2,8), g=HG[Math.floor(Math.random()*HG.length)];
+    p.innerHTML='<defs><linearGradient id="'+gid+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+g[0]+'"/><stop offset="1" stop-color="'+g[1]+'"/></linearGradient></defs><path fill="url(#'+gid+')" d="M12 21.2c-.4 0-.8-.2-1.1-.4C6.6 17.4 2.5 14 2.5 9.3 2.5 6.4 4.7 4 7.5 4c1.8 0 3.4 1 4.5 2.4C13.1 5 14.7 4 16.5 4c2.8 0 5 2.4 5 5.3 0 4.7-4.1 8.1-8.4 11.5-.3.2-.7.4-1.1.4z"/>';
+    p.style.left=e.clientX+'px'; p.style.top=e.clientY+'px'; document.body.appendChild(p);
+    p.animate([{transform:'translate(-50%,-50%) scale(1) rotate(0deg)',opacity:.95},{transform:'translate(calc(-50% + '+((Math.random()-.5)*18).toFixed(1)+'px), calc(-50% + '+(10+Math.random()*16).toFixed(1)+'px)) scale(.3) rotate('+((Math.random()-.5)*40).toFixed(0)+'deg)',opacity:0}],{duration:1000,easing:'ease-out'}).onfinish=function(){p.remove();};
+  });
+
+  /* films carousel v2 — FramerCarousel style */
+  function carGo(car,idx){var tr=car.querySelector('.rs-track'),n=tr.children.length;idx=Math.max(0,Math.min(n-1,idx));car.dataset.idx=idx;tr.style.transform='translateX('+(-idx*100)+'%)';
+    var w=car.closest('.rs-carwrap')||car;var p=w.querySelector('[data-car="prev"]'),nx=w.querySelector('[data-car="next"]');if(p)p.disabled=idx===0;if(nx)nx.disabled=idx===n-1;
+    var sec=car.closest('section');sec.querySelectorAll('.rs-cap').forEach(function(c,i){c.classList.toggle('is-active',i===idx);});}
+  document.addEventListener('click',function(e){if(!e.target.closest)return;var b=e.target.closest('[data-car]');if(b){var car=(b.closest('.rs-carwrap')||b.closest('section')).querySelector('.rs-car');carGo(car,+(car.dataset.idx||0)+(b.dataset.car==='next'?1:-1));}});
+  var drag=null;
+  document.addEventListener('pointerdown',function(e){var tr=e.target.closest&&e.target.closest('.rs-track');if(!tr)return;var car=tr.parentNode;var st=tr.closest('.stage');var sc=st.getBoundingClientRect().width/st.offsetWidth;drag={tr:tr,car:car,x:e.clientX,sc:sc,base:-(+(car.dataset.idx||0))*car.clientWidth,dx:0};tr.classList.add('is-drag');});
+  document.addEventListener('pointermove',function(e){if(!drag)return;drag.dx=(e.clientX-drag.x)/drag.sc;drag.tr.style.transform='translateX('+(drag.base+drag.dx)+'px)';});
+  document.addEventListener('pointerup',function(){if(!drag)return;var d=drag;drag=null;d.tr.classList.remove('is-drag');var i=+(d.car.dataset.idx||0);if(d.dx<-60)i++;else if(d.dx>60)i--;carGo(d.car,i);if(Math.abs(d.dx)>5){var stop=function(ev){ev.preventDefault();ev.stopPropagation();document.removeEventListener('click',stop,true);};document.addEventListener('click',stop,true);setTimeout(function(){document.removeEventListener('click',stop,true);},50);}});
+  document.addEventListener('dragstart',function(e){if(e.target.closest&&e.target.closest('.rs-track'))e.preventDefault();});
+  window.addEventListener('resize',fit);
+  fit(); setupScroll(frame().querySelector('.stage'));
+  window.addEventListener('load',fit);
+})();
+</script>
+
+
+
+<script>/* travel diary book v1 */
+(function(){
+  var SPREADS=[
+    {label:'Cover', L:null, R:'images/diary-cover.jpg'},
+    {label:'Day 2 — Nyhavn & Andersen', L:'images/diary-nyhavn.jpg', R:'images/diary-andersen.jpg'},
+    {label:'Day 1 — Noma Projects Shop', L:'images/diary-p78.jpg', R:'images/diary-p79.jpg'},
+    {label:'Day 1 — Aamanns & Locke', L:'images/diary-p80.jpg', R:'images/diary-p81.jpg'}
+  ];
+  var OPEN=4, FOLD=176, done=new WeakSet();
+  function mk(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+  function layer(sp,side){
+    var src=sp[side], L=mk('div','bk-layer'+(src?'':' end'));
+    if(src){var im=mk('img','bk-bg');im.src=src;im.alt='';im.draggable=false;L.appendChild(im);}
+    else L.appendChild(mk('span','bk-endmark',"R’s Story"));
+    return L;
+  }
+  function build(root){
+    var scene=root.querySelector('.bk-scene'), W=+root.dataset.w, H=+root.dataset.h;
+    scene.innerHTML='';
+    var book=mk('div','bk-book');book.style.width=W+'px';book.style.height=H+'px';book.style.fontSize=(W/48)+'px';
+    scene.appendChild(book);
+    var S=SPREADS.map(function(sp){
+      var s=mk('div','bk-spread'), o={s:s};
+      ['L','R'].forEach(function(side){
+        var pg=mk('div','bk-page bk-'+side), f=mk('div','bk-face'), b=mk('div','bk-back'), sh=mk('div','bk-shade'), sb=mk('div','bk-shade');
+        f.appendChild(layer(sp,side));f.appendChild(mk('div','bk-gutter'));f.appendChild(sh);b.appendChild(sb);
+        pg.appendChild(f);pg.appendChild(b);s.appendChild(pg);o[side]=pg;o['sh'+side]=sh;o['sb'+side]=sb;o['b'+side]=b;
+      });
+      book.appendChild(s);return o;
+    });
+    var label=root.querySelector('.bk-label'), num=root.querySelector('.bk-num'), N=S.length;
+    var pos=0, raf=0, timer=0, drag=null;
+    function paint(){
+      S.forEach(function(o,i){
+        var p=i-pos, ap=Math.abs(p);
+        if(ap>5){o.s.style.visibility='hidden';return;} o.s.style.visibility='visible';
+        var la=OPEN, ra=-OPEN, t=Math.min(1,ap);
+        if(p<0) ra=-(OPEN+t*(FOLD-OPEN)); else if(p>0) la=OPEN+t*(FOLD-OPEN);
+        var ex=Math.max(0,ap-1), dir=p<0?-1:1;
+        o.s.style.transform='translate3d('+(dir*ex*2.2)+'px,'+(ex*1.2)+'px,'+(-ap*5)+'px)';
+        o.L.style.transform='rotateY('+la+'deg)';o.R.style.transform='rotateY('+ra+'deg)';
+        var settled=ap>=0.999;
+        o.bL.style.visibility=o.bR.style.visibility=settled?'visible':'hidden';
+        o.shL.style.opacity=Math.sin(la*Math.PI/180)*0.45;o.shR.style.opacity=Math.sin(-ra*Math.PI/180)*0.45;
+        o.sbL.style.opacity=o.sbR.style.opacity=Math.min(0.25,ex*0.06);
+      });
+      var k=Math.max(0,Math.min(N-1,Math.round(pos)));
+      if(label)label.textContent=SPREADS[k].label;
+      if(num)num.textContent=String(k+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
+    }
+    function ease(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+    function go(target,dur){
+      target=Math.max(0,Math.min(N-1,target));cancelAnimationFrame(raf);
+      var from=pos, t0=performance.now(); dur=dur||Math.min(2200,900+Math.abs(target-from)*350);
+      (function step(now){var x=Math.min(1,(now-t0)/dur);pos=from+(target-from)*ease(x);paint();if(x<1)raf=requestAnimationFrame(step);})(t0);
+    }
+    function auto(){clearInterval(timer);timer=setInterval(function(){if(!document.body.contains(root)){clearInterval(timer);return;}if(drag||root.matches(':hover'))return;go(Math.round(pos)>=N-1?0:Math.round(pos)+1);},3600);}
+    root.querySelector('.bk-prev').onclick=function(){go(Math.round(pos)-1);auto();};
+    root.querySelector('.bk-next').onclick=function(){go(Math.round(pos)+1);auto();};
+    scene.addEventListener('pointerdown',function(e){
+      cancelAnimationFrame(raf);var sc=root.getBoundingClientRect().width/root.offsetWidth||1;
+      drag={x:e.clientX,p:pos,sc:sc,lx:e.clientX,lt:performance.now(),v:0};scene.setPointerCapture(e.pointerId);
+    });
+    scene.addEventListener('pointermove',function(e){
+      if(!drag)return;var dx=(e.clientX-drag.x)/drag.sc, now=performance.now();
+      drag.v=((e.clientX-drag.lx)/drag.sc)/Math.max(1,now-drag.lt);drag.lx=e.clientX;drag.lt=now;
+      pos=Math.max(-0.25,Math.min(N-0.75,drag.p-dx/(W*0.5)));paint();
+    });
+    function end(){if(!drag)return;var v=drag.v,tgt=Math.round(pos-v*0.6);if(Math.abs(v)>0.35&&tgt===Math.round(drag.p))tgt+=v<0?1:-1;drag=null;go(tgt,700);auto();}
+    scene.addEventListener('pointerup',end);scene.addEventListener('pointercancel',end);
+    root.tabIndex=0;root.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){go(Math.round(pos)+1);auto();}if(e.key==='ArrowLeft'){go(Math.round(pos)-1);auto();}});
+    paint();auto();
+  }
+  function scan(){document.querySelectorAll('.rs-bookwrap').forEach(function(r){if(!done.has(r)){done.add(r);build(r);}});}
+  scan();setInterval(scan,400);
+})();
+</script>
+<div class="rs-menu" id="rsMenu" role="dialog" aria-label="Menu"><button type="button" aria-label="Close menu">×</button><a href="#about">About</a><a href="journal.html">Travel Journal</a><a href="https://www.youtube.com/@r-story-travel" target="_blank" rel="noopener">Films</a><a href="little-joys.html">Little Joys</a><a href="letters.html">Letters</a></div>
+<script>(function(){var m=document.getElementById('rsMenu');document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('a[href="#menu"]');if(t){e.preventDefault();m.classList.add('open');return;}if(e.target.closest&&(e.target.closest('#rsMenu button')||e.target.closest('#rsMenu a'))){m.classList.remove('open');}});})();</script>
 </body>
 </html>
